@@ -89,6 +89,12 @@ bindkey -M vicmd "^[[Z" forward-word  # Shift + Tab
 # Zsh default auto-completion
 bindkey "^[[Z" complete-word  # Shift + Tab
 
+### zsh-vi-mode configuration
+# Disable editing the current command line in an external editor
+function zvm_after_lazy_keybindings() {
+  bindkey -M visual -r "v"
+}
+
 ### zsh-syntax-highlighting configuration
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)  # Highlight brackets
 ZSH_HIGHLIGHT_STYLES[path]="none"  # Don't underline paths

@@ -95,6 +95,9 @@ function zvm_after_lazy_keybindings() {
   bindkey -M visual -r "v"
 }
 
+# Always start with insert mode for each command line
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+
 ### zsh-syntax-highlighting configuration
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)  # Highlight brackets
 ZSH_HIGHLIGHT_STYLES[path]="none"  # Don't underline paths

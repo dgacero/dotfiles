@@ -1,34 +1,38 @@
 return {
   "akinsho/git-conflict.nvim",
-  version = "*",
   config = function()
-    local current_color = "#88c0d0"
-    local incoming_color = "#a3be8c"
-    local ancestor_color = "#b48ead"
-    vim.api.nvim_set_hl(
-      0, 'GitConflictCurrent',
-      { foreground = current_color, bold = true, default = true }
-    )
-    vim.api.nvim_set_hl(
-      0, 'GitConflictIncoming',
-      { foreground = incoming_color, bold = true, default = true }
-    )
-    vim.api.nvim_set_hl(
-      0, 'GitConflictAncestor',
-      { foreground = ancestor_color, bold = true, default = true }
-    )
-    vim.api.nvim_set_hl(
-      0, 'GitConflictCurrentLabel',
-      { foreground = current_color, bold = true, underline = true, default = true }
-    )
-    vim.api.nvim_set_hl(
-      0, 'GitConflictIncomingLabel',
-      { foreground = incoming_color, bold = true, underline = true, default = true }
-    )
-    vim.api.nvim_set_hl(
-      0, 'GitConflictAncestorLabel',
-      { foreground = ancestor_color, bold = true, underline = true, default = true }
-    )
+    local nord8  = "#88c0d0"
+    local nord13 = "#ebcb8b"
+    local nord15 = "#b48ead"
+
+    local function override_git_conflict_highlights()
+      vim.api.nvim_set_hl(
+        0, 'GitConflictCurrent',
+        { fg = nord8, bold = true }
+      )
+      vim.api.nvim_set_hl(
+        0, 'GitConflictIncoming',
+        { fg = nord13, bold = true }
+      )
+      vim.api.nvim_set_hl(
+        0, 'GitConflictAncestor',
+        { fg = nord15, bold = true }
+      )
+      vim.api.nvim_set_hl(
+        0, 'GitConflictCurrentLabel',
+        { fg = nord8, bold = true, underline = true}
+      )
+      vim.api.nvim_set_hl(
+        0, 'GitConflictIncomingLabel',
+        { fg = nord13, bold = true, underline = true }
+      )
+      vim.api.nvim_set_hl(
+        0, 'GitConflictAncestorLabel',
+        { fg = nord15, bold = true, underline = true }
+      )
+    end
+
+    vim.api.nvim_create_autocmd("VimEnter", { callback = override_git_conflict_highlights })
 
     require("git-conflict").setup({})
   end

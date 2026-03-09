@@ -79,15 +79,19 @@ antigen apply
 }
 
 ### zsh-autosuggestions configuration
-# Accepts the current suggestion
-bindkey "^I" autosuggest-accept  # Tab
+# NOTE: zsh-vi-mode overwrites some key bindings
+# See https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#execute-extra-commands
+function zvm_after_init() {
+    # Accepts the current suggestion
+    bindkey "^I" autosuggest-accept  # Tab
+
+    # Zsh default auto-completion
+    bindkey "^[[Z" complete-word  # Shift + Tab
+}
 
 # Move forward one word
 # With zsh-autosuggestions enabled, it accepts the next word in the current suggestion
 bindkey -M vicmd "^[[Z" forward-word  # Shift + Tab
-
-# Zsh default auto-completion
-bindkey "^[[Z" complete-word  # Shift + Tab
 
 ### zsh-vi-mode configuration
 # Disable editing the current command line in an external editor

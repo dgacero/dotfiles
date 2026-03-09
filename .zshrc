@@ -45,8 +45,8 @@ precmd() {
 export DIRCOLORS_FILE=$HOME/.dir_colors
 if [[ ! -s $DIRCOLORS_FILE ]]; then
     curl -L \
-      https://raw.githubusercontent.com/nordtheme/dircolors/refs/heads/develop/src/dir_colors \
-      > $DIRCOLORS_FILE
+        https://raw.githubusercontent.com/nordtheme/dircolors/refs/heads/develop/src/dir_colors \
+        > $DIRCOLORS_FILE
 fi
 test -r "$HOME/.dir_colors" && eval $(dircolors $HOME/.dir_colors)
 
@@ -66,11 +66,11 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 antigen bundle jeffreytse/zsh-vi-mode
 
-# Must be the last bundle, but come before zsh-history-substring-search
+# NOTE: Must be the last bundle, but come before zsh-history-substring-search
 # See https://github.com/zsh-users/zsh-history-substring-search#instal
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-# Must be the last bundle
+# NOTE: Must be the last bundle
 # See https://github.com/zsh-users/zsh-history-substring-search#install
 antigen bundle zsh-users/zsh-history-substring-search
 
@@ -92,7 +92,7 @@ bindkey "^[[Z" complete-word  # Shift + Tab
 ### zsh-vi-mode configuration
 # Disable editing the current command line in an external editor
 function zvm_after_lazy_keybindings() {
-  bindkey -M visual -r "v"
+    bindkey -M visual -r "v"
 }
 
 # Always start with insert mode for each command line

@@ -17,6 +17,10 @@ config.font_size = 14
 -- See https://wezterm.org/config/font-shaping.html#advanced-font-shaping-options
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
+-- Left Option key does not work correctly on macOS
+-- See https://github.com/wezterm/wezterm/issues/5468#issue-2315988600
+config.send_composed_key_when_left_alt_is_pressed = true
+
 ----- COLOR SCHEME -----
 config.color_scheme = "nord"
 

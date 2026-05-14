@@ -22,8 +22,15 @@ export VISUAL=$EDITOR
 # export COLORTERM=truecolor
 
 ##### ALIASES #####
-alias ls="ls -lAh --color=auto --group-directories-first"
-# alias rm="echo 'rm is disabled, use trash instead.'; false"
+# Use GNU ls on macOS if available
+if command -v gls >/dev/null 2>&1; then
+    alias ls="gls -lAh --color=auto --group-directories-first"
+elif ls --group-directories-first >/dev/null 2>&1; then
+    alias ls="ls -lAh --color=auto --group-directories-first"
+else
+    alias ls="ls -lAh --color=auto"
+fi
+
 alias clear="echo 'clear is disabled, use Ctrl-L instead.'; false"
 # NOTE: ripgrep must be installed
 alias rg="rg --hidden"

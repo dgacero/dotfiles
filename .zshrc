@@ -57,26 +57,34 @@ precmd() {
 }
 
 ##### DIRCOLORS #####
+# Use GNU dircolors on macOS if available
+if command -v gdircolors >/dev/null 2>&1; then
+    alias dircolors="gdircolors"
+fi
+
 # See https://github.com/nordtheme/dircolors
 export DIRCOLORS_FILE=$HOME/.dir_colors
-if [[ ! -s $DIRCOLORS_FILE ]]; then
-    curl -L \
-        https://raw.githubusercontent.com/nordtheme/dircolors/refs/heads/develop/src/dir_colors \
-        > $DIRCOLORS_FILE
+if command -v dircolors >/dev/null 2>&1; then
+    if [[ ! -s "$DIRCOLORS_FILE" ]]; then
+        curl -L \
+            https://raw.githubusercontent.com/nordtheme/dircolors/refs/heads/develop/src/dir_colors \
+            > "$DIRCOLORS_FILE"
+    fi
+
+    test -r "$DIRCOLORS_FILE" && eval "$(dircolors "$DIRCOLORS_FILE")"
 fi
-test -r "$HOME/.dir_colors" && eval $(dircolors $HOME/.dir_colors)
 
 ###### ANTIGEN (PLUGIN MANAGER) #####
 export ANTIGEN_FILE=$HOME/antigen.zsh
 
 # Download Antigen if it's not already installed
-if [[ ! -s $ANTIGEN_FILE ]]; then
-    curl -L git.io/antigen > $ANTIGEN_FILE
+if [[ ! -s "$ANTIGEN_FILE" ]]; then
+    curl -L git.io/antigen > "$ANTIGEN_FILE"
 fi
 
 # Apply plugins
 {
-source $ANTIGEN_FILE
+source "$ANTIGEN_FILE"
 
 antigen bundle zsh-users/zsh-autosuggestions
 

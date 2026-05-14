@@ -42,12 +42,11 @@ alias clear="echo 'clear is disabled, use Ctrl-L instead.'; false"
 set -o ignoreeof
 
 # Command prompt
-# if [[ -n "$TMUX" ]]; then
-#     export PS1="%B%F{blue}%2~%f %F{green}❯%f%b "
-# else
-#     export PS1="%F{red}(Not in tmux)%f %B%F{blue}%2~%f %F{green}❯%f%b "
-# fi
-export PS1="%B%F{blue}%2~%f %F{green}❯%f%b "
+if [[ -n "$TMUX" ]]; then
+    export PS1="%B%F{blue}%2~%f %F{green}❯%f%b "
+else
+    export PS1="MacOS %B%F{blue}%2~%f %F{green}❯%f%b "
+fi
 
 # Newline after every command
 precmd() {

@@ -31,9 +31,11 @@ else
     alias ls="ls -lAh --color=auto"
 fi
 
+if command -v rg >/dev/null 2>&1; then
+    alias rg="rg --hidden"
+fi
+
 alias clear="echo 'clear is disabled, use Ctrl-L instead.'; false"
-# NOTE: ripgrep must be installed
-alias rg="rg --hidden"
 
 ##### ZSH APPEARANCE #####
 # Disable Ctrl-D to close the terminal

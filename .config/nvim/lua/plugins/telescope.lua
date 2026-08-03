@@ -56,6 +56,7 @@ return {
         --  All the info you're looking for is in `:help telescope.setup()`
         --
         defaults = {
+          file_ignore_patterns = { '%.git/' },
           layout_strategy = "vertical",
           layout_config = {
             horizontal = {
@@ -67,6 +68,14 @@ return {
               preview_height = 0.4,
               mirror = true,
             },
+          },
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+          live_grep = {
+            additional_args = { '--hidden', '--glob=!.git' },
           },
         },
         extensions = {

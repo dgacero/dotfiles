@@ -228,7 +228,7 @@ return {
         mason = {
           -- clangd = {},
           -- gopls = {},
-          pyright = {},
+          -- pyright = {},
           -- rust_analyzer = {},
           -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
           --
@@ -237,6 +237,45 @@ return {
           --
           -- But for many setups, the LSP (`ts_ls`) will work just fine
           -- ts_ls = {},
+          --
+          -- Optional: uncomment ruff below to install it automatically via Mason.
+          -- The init_options block configures linting rules; remove it to use ruff's defaults.
+          -- ruff = {
+          --   init_options = {
+          --     settings = {
+          --       configuration = {
+          --         lint = {
+          --           ["pydocstyle"] = {
+          --             ["convention"] = "google",
+          --           },
+          --         },
+          --       },
+          --       lint = {
+          --         select = {
+          --           "E",  -- pycodestyle
+          --           "W",  -- pycodestyle
+          --           "F",  -- Pyflakes
+          --           "UP", -- pyupgrade
+          --           "B",  -- flake8-bugbear
+          --           "ANN", -- flake8-annotations
+          --           "SIM", -- flake8-simplify
+          --           "RET", -- flake8-return
+          --           "I",  -- isort
+          --           "D",  -- pydocstyle
+          --         },
+          --         ignore = {
+          --           "D212",   -- Multi-line docstring summary should start at the first line
+          --           "D100",   -- Missing docstring in public module
+          --           "D107",   -- Missing docstring in `__init__`
+          --           "D401",   -- First line of docstring should be in imperative mood
+          --           "D413",   -- Missing blank line after last section
+          --           "ANN204", -- Missing return type annotation for special method
+          --           "RET504", -- Unnecessary assignment to <variable> before 'return' statement
+          --         },
+          --       },
+          --     },
+          --   },
+          -- },
           --
           lua_ls = {
             -- cmd = { ... },
@@ -249,42 +288,6 @@ return {
                 },
                 -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                 -- diagnostics = { disable = { 'missing-fields' } },
-              },
-            },
-          },
-          ruff = {
-            init_options = {
-              settings = {
-                configuration = {
-                  lint = {
-                    ["pydocstyle"] = {
-                      ["convention"] = "google",
-                    },
-                  },
-                },
-                lint = {
-                  select = {
-                    "E",  -- pycodestyle
-                    "W",  -- pycodestyle
-                    "F",  -- Pyflakes
-                    "UP",  -- pyupgrade
-                    "B",  -- flake8-bugbear
-                    "ANN",  -- flake8-annotations
-                    "SIM",  -- flake8-simplify
-                    "RET",  -- flake8-return
-                    "I",  -- isort
-                    "D",  -- pydocstyle
-                  },
-                  ignore = {
-                    "D212",  -- Multi-line docstring summary should start at the first line
-                    "D100",  -- Missing docstring in public module
-                    "D107",  -- Missing docstring in `__init__`
-                    "D401",  -- First line of docstring should be in imperative mood
-                    "D413",  -- Missing blank line after last section
-                    "ANN204",  -- Missing return type annotation for special method
-                    "RET504",  -- Unnecessary assignment to <variable> before 'return' statement
-                  },
-                },
               },
             },
           },

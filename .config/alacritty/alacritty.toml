@@ -5,8 +5,12 @@ live_config_reload = true
 size = 14
 
 [font.normal]
-family = "JetBrains Mono"
-style = "Regular"
+family = "JetBrainsMono Nerd Font"
+style = "Light"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "SemiBold"
 
 # Nord palette with custom darker color #242933
 # See https://github.com/alacritty/alacritty-theme/blob/master/themes/nord.toml

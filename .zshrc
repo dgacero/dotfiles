@@ -45,7 +45,7 @@ set -o ignoreeof
 if [[ -n "$TMUX" ]]; then
     export PS1="%B%F{blue}%2~%f %F{green}❯%f%b "
 else
-    export PS1="MacOS %B%F{blue}%2~%f %F{green}❯%f%b "
+    export PS1="[No tmux] %B%F{blue}%2~%f %F{green}❯%f%b "
 fi
 
 # Newline after every command

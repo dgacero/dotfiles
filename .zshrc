@@ -122,6 +122,9 @@ function zvm_after_lazy_keybindings() {
     bindkey -M visual -r "v"
 }
 
+# Move to the first non-blank character of the line
+bindkey -M vicmd "_" vi-first-non-blank
+
 # Always start with insert mode for each command line
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 

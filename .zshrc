@@ -45,7 +45,7 @@ set -o ignoreeof
 if [[ -n "$TMUX" ]]; then
     export PS1="%B%F{blue}%2~%f %F{green}❯%f%b "
 else
-    export PS1="MacOS %B%F{blue}%2~%f %F{green}❯%f%b "
+    export PS1="[No tmux] %B%F{blue}%2~%f %F{green}❯%f%b "
 fi
 
 # Newline after every command
@@ -122,6 +122,9 @@ function zvm_after_lazy_keybindings() {
     bindkey -M visual -r "v"
 }
 
+# Move to the first non-blank character of the line
+bindkey -M vicmd "_" vi-first-non-blank
+
 # Always start with insert mode for each command line
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
@@ -138,3 +141,8 @@ bindkey -M vicmd "j" history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="fg=yellow,bold"
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="fg=red,bold"
+
+##### LOCAL OVERRIDES #####
+if [[ -f "$HOME/.zshrc.local" ]]; then
+    source "$HOME/.zshrc.local"
+fi

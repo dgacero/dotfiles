@@ -8,7 +8,7 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 
 config.font = wezterm.font({
-  family = "JetBrains Mono",
+  family = "JetBrainsMono Nerd Font",
   weight = 400,
 })
 config.font_size = 14

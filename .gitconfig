@@ -10,6 +10,9 @@
 [merge]
     conflictstyle = zdiff3
 
+[push]
+    autoSetupRemote = true
+
 ; See https://github.com/dandavison/delta/commit/fdfcc8fce30754a4f05eeb167a15d519888fc909
 [delta]
     navigate = true  # use n and N to move between diff sections

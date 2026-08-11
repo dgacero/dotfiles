@@ -93,14 +93,14 @@ return {
           vim.api.nvim_cmd({ cmd = "qall" }, {})
         end
 
-        -- :bd was probably issued an only tree window is left
+        -- :bd was probably issued and only tree window is left
         -- Behave as if tree was closed (see `:h :bd`)
         if e.event == "BufEnter" and winCount == 1 then
           -- Required to avoid "Vim:E444: Cannot close last window"
           vim.defer_fn(function()
             -- close nvim-tree: will go to the last buffer used before closing
             tree.toggle({ find_file = true, focus = true })
-            -- re-open nivm-tree
+            -- re-open nvim-tree
             tree.toggle({ find_file = true, focus = false })
           end, 10)
         end

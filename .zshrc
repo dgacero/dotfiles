@@ -35,7 +35,7 @@ if command -v rg >/dev/null 2>&1; then
     alias rg="rg --hidden"
 fi
 
-alias clear="echo 'clear is disabled, use Ctrl-L instead.'; false"
+alias clear="echo 'clear is disabled, use Ctrl-L instead'; false"
 
 ##### ZSH APPEARANCE #####
 # Disable Ctrl-D to close the terminal
@@ -89,8 +89,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 antigen bundle jeffreytse/zsh-vi-mode
 
-# NOTE: Must be the last bundle, but come before zsh-history-substring-search
-# See https://github.com/zsh-users/zsh-history-substring-search#instal
+# NOTE: Must be the last bundle but come before zsh-history-substring-search
+# See https://github.com/zsh-users/zsh-history-substring-search#install
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # NOTE: Must be the last bundle

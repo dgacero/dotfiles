@@ -19,7 +19,7 @@ Neovim config using [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugi
   - [Markdown: markview.nvim](#markdown-markviewnvim)
   - [Comments: ts-comments.nvim](#comments-ts-commentsnvim)
   - [Autopairs: nvim-autopairs](#autopairs-nvim-autopairs)
-  - [Indentation: indent-blankline.nvim](#indentation-indent-blanklinenvm)
+  - [Indentation: indent-blankline.nvim](#indentation-indent-blanklinenvim)
   - [Clipboard: nvim-osc52](#clipboard-nvim-osc52)
   - [Keybind hints: which-key.nvim](#keybind-hints-which-keynvim)
   - [Theme: nord.nvim](#theme-nordnvim)

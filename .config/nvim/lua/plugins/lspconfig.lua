@@ -33,14 +33,14 @@ return {
     config = function()
       -- Brief aside: **What is LSP?**
       --
-      -- LSP is an initialism you've probably heard, but might not understand what it is.
+      -- LSP is an initialism you've probably heard but might not understand what it is.
       --
       -- LSP stands for Language Server Protocol. It's a protocol that helps editors
       -- and language tooling communicate in a standardized fashion.
       --
       -- In general, you have a "server" which is some tool built to understand a particular
       -- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
-      -- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
+      -- (sometimes called LSP servers but that's kind of like ATM Machine) are standalone
       -- processes that communicate with some "client" - in this case, Neovim!
       --
       -- LSP provides Neovim with features like:
@@ -197,7 +197,7 @@ return {
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
-      -- NOTE: The following line is now commented as blink.cmp extends capabilites by default from its internal code:
+      -- NOTE: The following line is now commented as blink.cmp extends capabilities by default from its internal code:
       -- https://github.com/Saghen/blink.cmp/blob/102db2f5996a46818661845cf283484870b60450/plugin/blink-cmp.lua
       -- It has been left here as a comment for educational purposes (as the predecessor completion plugin required this explicit step).
       --

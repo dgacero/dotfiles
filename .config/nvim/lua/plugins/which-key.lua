@@ -22,8 +22,8 @@ return {
       delay = 0,
       -- For ModeChanged triggers, you can configure the opts.defer option.
       -- When it returns true, the popup will be shown only after an additional
-      -- key is pressed. So yaf, would show which-key after pressing ya, but
-      -- not after y.
+      -- key is pressed. So `yaf` would show which-key after pressing `ya` but
+      -- not after `y`.
       defer = function(ctx)
         if vim.list_contains({ "c", "d", "y" }, ctx.operator) then
           return true

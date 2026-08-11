@@ -1,4 +1,4 @@
- -- Enhance Neovim"s native comments (use "gcc")
+ -- Enhance Neovim's native comments (use "gcc")
 return {
   "folke/ts-comments.nvim",
   event = "VimEnter",

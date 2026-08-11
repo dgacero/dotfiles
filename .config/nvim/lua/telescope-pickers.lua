@@ -41,7 +41,7 @@ end
 
 ---- Picker functions ----
 
--- Generates a Find File picker but beautified
+-- Generates a Find File picker, but beautified
 -- -------------------------------------------
 -- This is a wrapping function used to modify the appearance of pickers that provide a Find File
 -- functionality, mainly because the default one doesn't look good. It does this by changing the 'display()'
@@ -77,7 +77,7 @@ function telescopePickers.prettyFilesPicker(pickerAndOptions)
 
     -- INSIGHT: 'entry_maker' is the hardcoded name of the option Telescope reads to obtain the function that
     --          will generate each entry.
-    -- INSIGHT: The paramenter 'line' is the actual data to be displayed by the picker, however, its form is
+    -- INSIGHT: The parameter 'line' is the actual data to be displayed by the picker, however, its form is
     --          raw (type 'any) and must be transformed into an entry table.
     options.entry_maker = function(line)
         -- Generate the Original Entry table
@@ -102,7 +102,7 @@ function telescopePickers.prettyFilesPicker(pickerAndOptions)
         --
         -- INSIGHT: We now have to replace the 'display' key in the original entry table to modify the way it
         --          is displayed.
-        -- INSIGHT: The 'entry' is the same Original Entry Table but is is passed to the 'display()' function
+        -- INSIGHT: The 'entry' is the same Original Entry Table but is passed to the 'display()' function
         --          later on the program execution, most likely when the actual display is made, which could
         --          be deferred to allow lazy loading.
         --
@@ -144,7 +144,7 @@ function telescopePickers.prettyFilesPicker(pickerAndOptions)
     end
 end
 
--- Generates a Grep Search picker but beautified
+-- Generates a Grep Search picker, but beautified
 -- ----------------------------------------------
 -- This is a wrapping function used to modify the appearance of pickers that provide Grep Search
 -- functionality, mainly because the default one doesn't look good. It does this by changing the 'display()'
@@ -178,7 +178,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
 
     -- INSIGHT: 'entry_maker' is the hardcoded name of the option Telescope reads to obtain the function that
     --          will generate each entry.
-    -- INSIGHT: The paramenter 'line' is the actual data to be displayed by the picker, however, its form is
+    -- INSIGHT: The parameter 'line' is the actual data to be displayed by the picker, however, its form is
     --          raw (type 'any) and must be transformed into an entry table.
     options.entry_maker = function(line)
         -- Generate the Original Entry table
@@ -204,7 +204,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
         --
         -- INSIGHT: We now have to replace the 'display' key in the original entry table to modify the way it
         --          is displayed.
-        -- INSIGHT: The 'entry' is the same Original Entry Table but is is passed to the 'display()' function
+        -- INSIGHT: The 'entry' is the same Original Entry Table but is passed to the 'display()' function
         --          later on the program execution, most likely when the actual display is made, which could
         --          be deferred to allow lazy loading.
         --

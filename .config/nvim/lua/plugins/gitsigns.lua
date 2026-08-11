@@ -50,7 +50,7 @@ return {
           else
             gitsigns.nav_hunk('prev')
           end
-        end, { desc = 'Jump to previous Git Change' })
+        end, { desc = 'Jump to previous Git change' })
 
         -- Actions
         map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Stage hunk' })
@@ -84,7 +84,7 @@ return {
 
         -- Toggles
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame,
-            { desc = 'Toogle line blame' })
+            { desc = 'Toggle line blame' })
         map('n', '<leader>tw', gitsigns.toggle_word_diff)
 
         -- Text object

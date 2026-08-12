@@ -14,7 +14,20 @@ return {
             },
         },
         opts = {
-            notify_on_error = false,
+            formatters = {
+                stylua = {
+                    append_args = function(self, ctx)
+                        local found = vim.fs.find(
+                            { ".stylua.toml", "stylua.toml" },
+                            { upward = true, path = ctx.dirname }
+                        )
+                        if #found > 0 then
+                            return {}
+                        end
+                        return { "--indent-type", "Spaces", "--indent-width", "4" }
+                    end,
+                },
+            },
             -- format_on_save = function(bufnr)
             --   -- Disable "format_on_save lsp_fallback" for languages that don't
             --   -- have a well standardized coding style. You can add additional

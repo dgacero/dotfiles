@@ -19,7 +19,7 @@ Neovim config using [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugi
   - [Markdown: markview.nvim](#markdown-markviewnvim)
   - [Comments: ts-comments.nvim](#comments-ts-commentsnvim)
   - [Autopairs: nvim-autopairs](#autopairs-nvim-autopairs)
-  - [Indentation: indent-blankline.nvim](#indentation-indent-blanklinenvm)
+  - [Indentation: indent-blankline.nvim](#indentation-indent-blanklinenvim)
   - [Clipboard: nvim-osc52](#clipboard-nvim-osc52)
   - [Keybind hints: which-key.nvim](#keybind-hints-which-keynvim)
   - [Theme: nord.nvim](#theme-nordnvim)
@@ -32,12 +32,12 @@ Neovim config using [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugi
 
 Useful commands:
 
-| Command | Action |
-|---------|--------|
-| `:Lazy` | Open the lazy.nvim UI |
-| `:Lazy update` | Update all plugins |
-| `:Lazy clean` | Remove plugins no longer in the plugin list |
-| `:Lazy health` | Run health checks |
+| Command        | Action                                      |
+| -------------- | ------------------------------------------- |
+| `:Lazy`        | Open the lazy.nvim UI                       |
+| `:Lazy update` | Update all plugins                          |
+| `:Lazy clean`  | Remove plugins no longer in the plugin list |
+| `:Lazy health` | Run health checks                           |
 
 ## Plugins
 
@@ -47,13 +47,13 @@ Useful commands:
 
 Sources: LSP, path, snippets, and lazydev (Lua API).
 
-| Key | Action |
-|-----|--------|
+| Key                 | Action                                 |
+| ------------------- | -------------------------------------- |
 | `<Tab>` / `<S-Tab>` | Select next / previous completion item |
-| `<C-space>` | Open completion menu or docs |
-| `<C-n>` / `<C-p>` | Select next / previous item |
-| `<C-e>` | Close completion menu |
-| `<C-k>` | Toggle signature help |
+| `<C-space>`         | Open completion menu or docs           |
+| `<C-n>` / `<C-p>`   | Select next / previous item            |
+| `<C-e>`             | Close completion menu                  |
+| `<C-k>`             | Toggle signature help                  |
 
 ### LSP: nvim-lspconfig + Mason
 
@@ -65,23 +65,23 @@ Optional servers (uncomment in `lua/plugins/lspconfig.lua` to enable): `pyright`
 
 **LSP keymaps** (active when an LSP attaches to a buffer):
 
-| Key | Action |
-|-----|--------|
-| `gd` | Go to definition |
-| `gD` | Go to declaration |
-| `gr` | Go to references |
-| `gi` | Go to implementation |
-| `gt` | Go to type definition |
-| `<leader>r` | Rename symbol |
-| `<leader>c` | Code action / suggestions |
+| Key          | Action                                 |
+| ------------ | -------------------------------------- |
+| `gd`         | Go to definition                       |
+| `gD`         | Go to declaration                      |
+| `gr`         | Go to references                       |
+| `gi`         | Go to implementation                   |
+| `gt`         | Go to type definition                  |
+| `<leader>r`  | Rename symbol                          |
+| `<leader>c`  | Code action / suggestions              |
 | `<leader>th` | Toggle inline type and parameter hints |
 
 **Diagnostic keymaps:**
 
-| Key | Action |
-|-----|--------|
-| `]d` | Next diagnostic |
-| `[d` | Previous diagnostic |
+| Key         | Action                           |
+| ----------- | -------------------------------- |
+| `]d`        | Next diagnostic                  |
+| `[d`        | Previous diagnostic              |
 | `<leader>e` | Open floating diagnostic message |
 
 ### Formatting: conform.nvim
@@ -90,8 +90,8 @@ Optional servers (uncomment in `lua/plugins/lspconfig.lua` to enable): `pyright`
 
 Configured formatters: `stylua` for Lua, `ruff_format` and `ruff_organize_imports` for Python.
 
-| Key | Action |
-|-----|--------|
+| Key         | Action                |
+| ----------- | --------------------- |
 | `<leader>f` | Format current buffer |
 
 ### Syntax: nvim-treesitter
@@ -106,19 +106,19 @@ No custom keymaps.
 
 [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) for fuzzy finding files, text, buffers, and more.
 
-| Key | Action |
-|-----|--------|
-| `<leader>sf` | Find files |
-| `<leader>sr` | Recent files |
-| `<leader>sb` | Open buffers |
-| `<leader>sw` | Search word under cursor |
+| Key                | Action                         |
+| ------------------ | ------------------------------ |
+| `<leader>sf`       | Find files                     |
+| `<leader>sr`       | Recent files                   |
+| `<leader>sb`       | Open buffers                   |
+| `<leader>sw`       | Search word under cursor       |
 | `<leader><leader>` | Live grep in current directory |
-| `<leader>so` | Live grep in open files |
-| `<leader>sh` | Search help tags |
-| `<leader>sk` | Search keymaps |
-| `<leader>st` | Search Telescope pickers |
-| `<leader>sn` | Search Neovim config files |
-| `<leader>/` | Fuzzy search in current buffer |
+| `<leader>so`       | Live grep in open files        |
+| `<leader>sh`       | Search help tags               |
+| `<leader>sk`       | Search keymaps                 |
+| `<leader>st`       | Search Telescope pickers       |
+| `<leader>sn`       | Search Neovim config files     |
+| `<leader>/`        | Fuzzy search in current buffer |
 
 Inside a Telescope picker: press `<C-/>` (insert mode) or `?` (normal mode) to see all available keymaps.
 
@@ -128,8 +128,8 @@ Inside a Telescope picker: press `<C-/>` (insert mode) or `?` (normal mode) to s
 
 Shows dotfiles. Follows the current file automatically.
 
-| Key | Action |
-|-----|--------|
+| Key     | Action           |
+| ------- | ---------------- |
 | `<C-n>` | Toggle file tree |
 
 ### Git signs: gitsigns.nvim
@@ -138,36 +138,36 @@ Shows dotfiles. Follows the current file automatically.
 
 **Navigation:**
 
-| Key | Action |
-|-----|--------|
-| `]c` | Next git change |
+| Key  | Action              |
+| ---- | ------------------- |
+| `]c` | Next git change     |
 | `[c` | Previous git change |
 
 **Hunk actions:**
 
-| Key | Action |
-|-----|--------|
-| `<leader>hs` | Stage hunk |
-| `<leader>hr` | Reset hunk |
-| `<leader>hS` | Stage entire buffer |
-| `<leader>hR` | Reset entire buffer |
-| `<leader>hp` | Preview hunk popup |
-| `<leader>hi` | Preview hunk inline |
-| `<leader>hb` | Blame current line |
-| `<leader>hd` | Diff against index |
+| Key          | Action                   |
+| ------------ | ------------------------ |
+| `<leader>hs` | Stage hunk               |
+| `<leader>hr` | Reset hunk               |
+| `<leader>hS` | Stage entire buffer      |
+| `<leader>hR` | Reset entire buffer      |
+| `<leader>hp` | Preview hunk popup       |
+| `<leader>hi` | Preview hunk inline      |
+| `<leader>hb` | Blame current line       |
+| `<leader>hd` | Diff against index       |
 | `<leader>hD` | Diff against last commit |
 
 **Toggles:**
 
-| Key | Action |
-|-----|--------|
+| Key          | Action            |
+| ------------ | ----------------- |
 | `<leader>tb` | Toggle line blame |
-| `<leader>tw` | Toggle word diff |
+| `<leader>tw` | Toggle word diff  |
 
 **Text object:**
 
-| Key | Action |
-|-----|--------|
+| Key  | Action                               |
+| ---- | ------------------------------------ |
 | `ih` | Select hunk (operator / visual mode) |
 
 ### Git conflicts: git-conflict.nvim
@@ -180,20 +180,20 @@ No custom keymaps. Default bindings: `co` (ours), `ct` (theirs), `cb` (both), `c
 
 [diffview.nvim](https://github.com/sindrets/diffview.nvim) provides a rich diff and file history viewer.
 
-| Command | Action |
-|---------|--------|
-| `:DiffviewOpen` | Open diff against index |
+| Command                  | Action                   |
+| ------------------------ | ------------------------ |
+| `:DiffviewOpen`          | Open diff against index  |
 | `:DiffviewFileHistory %` | History for current file |
-| `:DiffviewClose` | Close diffview |
+| `:DiffviewClose`         | Close diffview           |
 
 ### Buffers: barbar.nvim
 
 [barbar.nvim](https://github.com/romgrk/barbar.nvim) shows open buffers as a tab bar at the top of the screen.
 
-| Key | Action |
-|-----|--------|
-| `<leader>n` | Next buffer |
-| `<leader>p` | Previous buffer |
+| Key         | Action               |
+| ----------- | -------------------- |
+| `<leader>n` | Next buffer          |
+| `<leader>p` | Previous buffer      |
 | `<leader>q` | Close current buffer |
 
 ### Markdown: markview.nvim
@@ -206,10 +206,10 @@ No custom keymaps. Toggle with `:Markview` or `:Markview toggle`.
 
 [ts-comments.nvim](https://github.com/folke/ts-comments.nvim) enhances Neovim's built-in comment operator with Treesitter-aware comment strings per language.
 
-| Key | Action |
-|-----|--------|
-| `gcc` | Toggle line comment |
-| `gc` | Toggle comment (works with movement keys) |
+| Key   | Action                                    |
+| ----- | ----------------------------------------- |
+| `gcc` | Toggle line comment                       |
+| `gc`  | Toggle comment (works with movement keys) |
 
 ### Autopairs: nvim-autopairs
 

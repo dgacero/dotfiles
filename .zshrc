@@ -35,7 +35,7 @@ if command -v rg >/dev/null 2>&1; then
     alias rg="rg --hidden"
 fi
 
-alias clear="echo 'clear is disabled, use Ctrl-L instead.'; false"
+alias clear="echo 'clear is disabled, use Ctrl-L instead'; false"
 
 ##### ZSH APPEARANCE #####
 # Disable Ctrl-D to close the terminal
@@ -67,7 +67,7 @@ if command -v dircolors >/dev/null 2>&1; then
     if [[ ! -s "$DIRCOLORS_FILE" ]]; then
         curl -L \
             https://raw.githubusercontent.com/nordtheme/dircolors/refs/heads/develop/src/dir_colors \
-            > "$DIRCOLORS_FILE"
+            >"$DIRCOLORS_FILE"
     fi
 
     test -r "$DIRCOLORS_FILE" && eval "$(dircolors "$DIRCOLORS_FILE")"
@@ -78,27 +78,27 @@ export ANTIGEN_FILE=$HOME/antigen.zsh
 
 # Download Antigen if it's not already installed
 if [[ ! -s "$ANTIGEN_FILE" ]]; then
-    curl -L git.io/antigen > "$ANTIGEN_FILE"
+    curl -L git.io/antigen >"$ANTIGEN_FILE"
 fi
 
 # Apply plugins
 {
-source "$ANTIGEN_FILE"
+    source "$ANTIGEN_FILE"
 
-antigen bundle zsh-users/zsh-autosuggestions
+    antigen bundle zsh-users/zsh-autosuggestions
 
-antigen bundle jeffreytse/zsh-vi-mode
+    antigen bundle jeffreytse/zsh-vi-mode
 
-# NOTE: Must be the last bundle, but come before zsh-history-substring-search
-# See https://github.com/zsh-users/zsh-history-substring-search#instal
-antigen bundle zsh-users/zsh-syntax-highlighting
+    # NOTE: Must be the last bundle but come before zsh-history-substring-search
+    # See https://github.com/zsh-users/zsh-history-substring-search#install
+    antigen bundle zsh-users/zsh-syntax-highlighting
 
-# NOTE: Must be the last bundle
-# See https://github.com/zsh-users/zsh-history-substring-search#install
-antigen bundle zsh-users/zsh-history-substring-search
+    # NOTE: Must be the last bundle
+    # See https://github.com/zsh-users/zsh-history-substring-search#install
+    antigen bundle zsh-users/zsh-history-substring-search
 
-# Tell Antigen that you're done
-antigen apply
+    # Tell Antigen that you're done
+    antigen apply
 }
 
 ### zsh-autosuggestions configuration
@@ -106,15 +106,15 @@ antigen apply
 # See https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#execute-extra-commands
 function zvm_after_init() {
     # Accepts the current suggestion
-    bindkey "^I" autosuggest-accept  # Tab
+    bindkey "^I" autosuggest-accept # Tab
 
     # Zsh default auto-completion
-    bindkey "^[[Z" complete-word  # Shift + Tab
+    bindkey "^[[Z" complete-word # Shift + Tab
 }
 
 # Move forward one word
 # With zsh-autosuggestions enabled, it accepts the next word in the current suggestion
-bindkey -M vicmd "^[[Z" forward-word  # Shift + Tab
+bindkey -M vicmd "^[[Z" forward-word # Shift + Tab
 
 ### zsh-vi-mode configuration
 # Disable editing the current command line in an external editor
@@ -129,9 +129,9 @@ bindkey -M vicmd "_" vi-first-non-blank
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
 ### zsh-syntax-highlighting configuration
-ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)  # Highlight brackets
-ZSH_HIGHLIGHT_STYLES[path]="none"  # Don't underline paths
-ZSH_HIGHLIGHT_STYLES[precommand]="fg=green"  # Don't underline paths
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)      # Highlight brackets
+ZSH_HIGHLIGHT_STYLES[path]="none"           # Don't underline paths
+ZSH_HIGHLIGHT_STYLES[precommand]="fg=green" # Don't underline paths
 
 ### zsh-history-substring-search configuration
 # bindkey "^[[A" history-substring-search-up  # Up arrow

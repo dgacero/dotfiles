@@ -1,3 +1,6 @@
-# This empty files fixes the error:
+# This file's presence fixes the error:
 #   "Your workspace is set to [...]. Lua Language server refused to load this directory."
 # See https://github.com/LunarVim/LunarVim/issues/2736#issuecomment-1171080243
+
+indent_type = "Spaces"
+indent_width = 4

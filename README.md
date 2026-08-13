@@ -12,44 +12,44 @@ Personal dotfiles managed as a Git repository and symlinked into `$HOME`.
 
 ## What's included
 
-| Path | Purpose |
-|------|---------|
-| `.zshrc` | Zsh config: history, aliases, prompt, vi-mode, Antigen plugin manager |
-| `.gitconfig` | Git config: delta pager, histogram diffs, Nord color scheme |
-| `.dir_colors` | Nord-themed `ls` colors |
-| `.config/nvim/` | Neovim config ([Neovim README](.config/nvim/README.md)) |
-| `.config/tmux/` | tmux config ([tmux README](.config/tmux/README.md)) |
-| `.config/alacritty/` | Alacritty terminal: Nord theme, JetBrainsMono Nerd Font |
-| `.config/wezterm/` | WezTerm terminal: Nord theme, JetBrainsMono Nerd Font |
+| Path                 | Purpose                                                               |
+| -------------------- | --------------------------------------------------------------------- |
+| `.zshrc`             | Zsh config: history, aliases, prompt, vi-mode, Antigen plugin manager |
+| `.gitconfig`         | Git config: delta pager, histogram diffs, Nord color scheme           |
+| `.dir_colors`        | Nord-themed `ls` colors                                               |
+| `.config/nvim/`      | Neovim config ([Neovim README](.config/nvim/README.md))               |
+| `.config/tmux/`      | tmux config ([tmux README](.config/tmux/README.md))                   |
+| `.config/alacritty/` | Alacritty terminal: Nord theme, JetBrainsMono Nerd Font               |
+| `.config/wezterm/`   | WezTerm terminal: Nord theme, JetBrainsMono Nerd Font                 |
 
 ## Prerequisites
 
 Required:
 
-| Tool | Required by | Install |
-|------|-------------|---------|
-| `git` | everything | system package manager |
-| `curl` | `.zshrc` downloads Antigen on first run | system package manager |
-| `nvim` >= 0.10 | `.config/nvim/` | `brew install neovim` |
-| `tmux` | `.config/tmux/` | `brew install tmux` |
-| `delta` | `.gitconfig` | `brew install git-delta` |
-| `rg` (ripgrep) | `.zshrc` alias, Neovim Telescope | `brew install ripgrep` |
+| Tool           | Required by                             | Install                  |
+| -------------- | --------------------------------------- | ------------------------ |
+| `git`          | everything                              | system package manager   |
+| `curl`         | `.zshrc` downloads Antigen on first run | system package manager   |
+| `nvim` >= 0.10 | `.config/nvim/`                         | `brew install neovim`    |
+| `tmux`         | `.config/tmux/`                         | `brew install tmux`      |
+| `delta`        | `.gitconfig`                            | `brew install git-delta` |
+| `rg` (ripgrep) | `.zshrc` alias, Neovim Telescope        | `brew install ripgrep`   |
 
 macOS - optional but recommended:
 
-| Tool | Purpose | Install |
-|------|---------|---------|
-| GNU coreutils | Better `ls` colors via `gls` and `gdircolors` | `brew install coreutils` |
-| Alacritty | GPU-accelerated terminal | https://alacritty.org |
-| JetBrainsMono Nerd Font | Required by the Alacritty config | `brew install font-jetbrains-mono-nerd-font` |
+| Tool                    | Purpose                                       | Install                                      |
+| ----------------------- | --------------------------------------------- | -------------------------------------------- |
+| GNU coreutils           | Better `ls` colors via `gls` and `gdircolors` | `brew install coreutils`                     |
+| Alacritty               | GPU-accelerated terminal                      | https://alacritty.org                        |
+| JetBrainsMono Nerd Font | Required by the Alacritty config              | `brew install font-jetbrains-mono-nerd-font` |
 
 Auto-installed on first use:
 
-| Tool | What installs it |
-|------|-----------------|
-| Antigen | `.zshrc` downloads it via `curl` on first shell load |
-| lazy.nvim | Neovim installs it on first launch |
-| `lua_ls`, `stylua` | Mason installs them on first Neovim launch |
+| Tool               | What installs it                                     |
+| ------------------ | ---------------------------------------------------- |
+| Antigen            | `.zshrc` downloads it via `curl` on first shell load |
+| lazy.nvim          | Neovim installs it on first launch                   |
+| `lua_ls`, `stylua` | Mason installs them on first Neovim launch           |
 
 ## Setup
 
@@ -113,18 +113,18 @@ lazy.nvim installs itself and all plugins on first launch.
 
 **Antigen** is the Zsh plugin manager. `.zshrc` downloads `antigen.zsh` to `$HOME` via `curl` on the first run if it is not already present.
 
-| Plugin | Purpose |
-|--------|---------|
-| `zsh-users/zsh-autosuggestions` | Fish-style inline command suggestions |
-| `jeffreytse/zsh-vi-mode` | Vi key bindings in the shell |
-| `zsh-users/zsh-syntax-highlighting` | Real-time syntax coloring |
+| Plugin                                   | Purpose                                 |
+| ---------------------------------------- | --------------------------------------- |
+| `zsh-users/zsh-autosuggestions`          | Fish-style inline command suggestions   |
+| `jeffreytse/zsh-vi-mode`                 | Vi key bindings in the shell            |
+| `zsh-users/zsh-syntax-highlighting`      | Real-time syntax coloring               |
 | `zsh-users/zsh-history-substring-search` | Up/down arrows search history by prefix |
 
 ## Machine-local overrides
 
-| File | Purpose |
-|------|---------|
+| File                 | Purpose                                                |
+| -------------------- | ------------------------------------------------------ |
 | `~/.gitconfig.local` | Git identity (name, email), work-specific git settings |
-| `~/.zshrc.local` | Machine-specific aliases, exports, or overrides |
+| `~/.zshrc.local`     | Machine-specific aliases, exports, or overrides        |
 
 Neither file is tracked. `.gitconfig` includes `.gitconfig.local` automatically (silently ignored if absent). `.zshrc` sources `.zshrc.local` at the end if it exists.

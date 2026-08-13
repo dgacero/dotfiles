@@ -1,4 +1,4 @@
--- For `plugins/markview.lua` users.
+-- Markdown/HTML/LaTeX/Typst/YAML previewer
 return {
     "OXY2DEV/markview.nvim",
     lazy = false,

@@ -1,6 +1,4 @@
--- autopairs
--- https://github.com/windwp/nvim-autopairs
-
+-- Auto-close brackets, quotes, and parens
 return {
     "windwp/nvim-autopairs",
     event = "InsertEnter",

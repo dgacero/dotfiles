@@ -1,4 +1,4 @@
--- See https://github.com/nvim-lua/kickstart.nvim/pull/1475/files
+-- LSP server configs for the Nvim LSP client, installed via Mason
 return {
     -- LSP Plugins
     {

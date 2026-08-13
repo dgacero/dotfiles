@@ -1,5 +1,6 @@
+-- Treesitter parsers for syntax highlighting and code navigation
 return {
-    { -- Highlight, edit, and navigate code
+    {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         -- [[ Configure Treesitter ]] See `:help nvim-treesitter`

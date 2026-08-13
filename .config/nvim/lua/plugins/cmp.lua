@@ -1,4 +1,5 @@
-return { -- Autocompletion
+-- Autocompletion
+return {
     {
         "saghen/blink.cmp",
         event = "VimEnter",

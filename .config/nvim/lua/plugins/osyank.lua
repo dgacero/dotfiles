@@ -1,3 +1,4 @@
+-- Copy to system clipboard over SSH via OSC52
 return {
     "ojroques/nvim-osc52",
     config = function()

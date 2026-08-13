@@ -1,3 +1,4 @@
+-- Visualize and resolve git merge conflicts
 return {
     "akinsho/git-conflict.nvim",
     config = function()

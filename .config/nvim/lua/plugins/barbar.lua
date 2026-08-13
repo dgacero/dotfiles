@@ -1,3 +1,4 @@
+-- Buffer tabs
 return {
     -- "ap/vim-buftabline",
     "romgrk/barbar.nvim",

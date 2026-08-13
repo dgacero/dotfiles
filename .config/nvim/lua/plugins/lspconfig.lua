@@ -215,8 +215,8 @@ return {
             -- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             -- Language servers can broadly be installed in the following ways:
-            --  1) via the mason package manager; or
-            --  2) via your system's package manager; or
+            --  1) via the mason package manager, or
+            --  2) via your system's package manager, or
             --  3) via a release binary from a language server's repo that's accessible somewhere on your system.
 
             -- The servers table comprises of the following sub-tables:
@@ -250,7 +250,7 @@ return {
                     -- ts_ls = {},
                     --
                     -- Optional: uncomment ruff below to install it automatically via Mason.
-                    -- The init_options block configures linting rules; remove it to use ruff's defaults.
+                    -- The init_options block configures linting rules. Remove it to use ruff's defaults.
                     -- ruff = {
                     --   init_options = {
                     --     settings = {

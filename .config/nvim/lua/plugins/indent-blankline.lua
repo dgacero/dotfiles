@@ -1,4 +1,4 @@
--- Indentation guides
+-- Indentation guides.
 local gh = require("pack").gh
 
 vim.pack.add({ gh("lukas-reineke/indent-blankline.nvim") })

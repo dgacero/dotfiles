@@ -1,69 +1,61 @@
--- Never show status line
+-- Never show the status line.
 vim.o.laststatus = 0
 
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
-
--- Make line numbers default
+-- Show the line number for every line.
 vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
+-- Combined with `number`, other lines show their distance from the cursor.
 vim.o.relativenumber = true
 
--- Enable mouse mode, can be useful for resizing splits for example!
+-- Enable mouse mode (useful for resizing splits).
 vim.o.mouse = "a"
 
--- Don't show the mode, since it's already in the status line
+-- Don't show the mode indicator (e.g. "-- INSERT --") in the command line.
 vim.o.showmode = false
 
--- Enable break indent
+-- Every wrapped line continues visually indented, preserving horizontal
+-- blocks of text.
 vim.o.breakindent = true
 
--- Save undo history
+-- Enable undo/redo changes even after closing and reopening a file.
 vim.o.undofile = true
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+-- Case-insensitive searching unless \C or one or more capital letters are in
+-- the search term.
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Decrease update time
+-- Idle time (ms) before the swap file writes and `CursorHold` fires, which
+-- plugins use for things like LSP reference highlighting (see
+-- `lspconfig.lua`). Lower than the 4s default so that feels responsive.
 vim.o.updatetime = 250
 
--- Decrease mapped sequence wait time
+-- Time (ms) to wait for a mapped key sequence (e.g. the leader key) before
+-- giving up on it.
 vim.o.timeoutlen = 300
 
--- Configure how new splits should be opened
+-- Open new splits to the right/below, not Vim's default left/above.
 vim.o.splitright = true
 vim.o.splitbelow = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
---
---  Notice listchars is set using `vim.opt` instead of `vim.o`.
---  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
---   See `:help lua-options`
---   and `:help lua-options-guide`
+-- Display certain whitespace characters in the editor. Uses `vim.opt`
+-- instead of `vim.o` since only it can take a table value.
 vim.o.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
--- Preview substitutions live, as you type!
+-- Preview substitutions as you type, with a split showing off-screen matches.
 vim.o.inccommand = "split"
 
--- Show which line your cursor is on
+-- Highlight the entire line the cursor is on, not just the cursor itself.
 vim.o.cursorline = true
 
--- Minimal number of screen lines to keep above and below the cursor.
+-- Keep a minimal number of screen lines above and below the cursor.
 vim.o.scrolloff = 10
 
--- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
--- instead raise a dialog asking if you wish to save the current file(s)
--- See `:help 'confirm'`
+-- Raise a dialog to save changes instead of failing operations like `:q`.
 vim.o.confirm = true
 
--- Indentation settings
+-- Fallback indent settings. guess-indent.nvim overrides these per buffer when
+-- detection succeeds.
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4

@@ -1,4 +1,4 @@
--- Git gutter signs, hunk navigation, and blame
+-- Git gutter signs, hunk navigation, and blame.
 local gh = require("pack").gh
 
 vim.pack.add({ gh("lewis6991/gitsigns.nvim") })
@@ -73,6 +73,6 @@ require("gitsigns").setup({
         map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Toggle line blame" })
         map("n", "<leader>tw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" })
 
-        map({ "o", "x" }, "ih", gitsigns.select_hunk)
+        map({ "o", "x" }, "ih", gitsigns.select_hunk, { desc = "Select hunk" })
     end,
 })

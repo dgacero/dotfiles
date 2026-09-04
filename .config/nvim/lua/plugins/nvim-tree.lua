@@ -1,4 +1,4 @@
--- File explorer sidebar
+-- File explorer sidebar.
 local gh = require("pack").gh
 
 -- nvim-web-devicons is installed earlier by the telescope module.
@@ -40,7 +40,6 @@ require("nvim-tree").setup({
         },
     },
     renderer = {
-        -- root_folder_label = true,
         highlight_git = true,
         highlight_opened_files = "none",
         indent_markers = {
@@ -59,20 +58,21 @@ require("nvim-tree").setup({
 
 vim.keymap.set("n", "<C-n>", function()
     require("nvim-tree.api").tree.toggle()
-end, { silent = true, noremap = true })
+end, { silent = true, noremap = true, desc = "Toggle file explorer" })
 
--- Make :bd and :q behave as usual when tree is visible
+-- Keep `:bd` and `:q` from being swallowed by the tree window, which nvim-tree
+-- doesn't handle on its own.
 vim.api.nvim_create_autocmd({ "BufEnter", "QuitPre" }, {
     nested = false,
     callback = function(e)
         local tree = require("nvim-tree.api").tree
 
-        -- Nothing to do if tree is not opened
         if not tree.is_visible() then
             return
         end
 
-        -- How many focusable windows do we have? (excluding e.g. incline status window)
+        -- Exclude non-focusable windows (e.g. which-key popups, LSP hover)
+        -- from the count.
         local winCount = 0
         for _, winId in ipairs(vim.api.nvim_list_wins()) do
             if vim.api.nvim_win_get_config(winId).focusable then
@@ -80,19 +80,20 @@ vim.api.nvim_create_autocmd({ "BufEnter", "QuitPre" }, {
             end
         end
 
-        -- We want to quit and only one window besides tree is left
+        -- Two focusable windows means only the tree and one other window are
+        -- left.
         if e.event == "QuitPre" and winCount == 2 then
             vim.api.nvim_cmd({ cmd = "qall" }, {})
         end
 
-        -- :bd was probably issued and only tree window is left
-        -- Behave as if tree was closed (see `:h :bd`)
+        -- `:bd` was probably issued and only the tree window is left, so behave
+        -- as if the tree was closed (see `:h :bd`).
         if e.event == "BufEnter" and winCount == 1 then
-            -- Required to avoid "Vim:E444: Cannot close last window"
+            -- Required to avoid "Vim:E444: Cannot close last window".
             vim.defer_fn(function()
-                -- close nvim-tree: will go to the last buffer used before closing
+                -- Close the tree, landing on the last buffer used before
+                -- closing.
                 tree.toggle({ find_file = true, focus = true })
-                -- re-open nvim-tree
                 tree.toggle({ find_file = true, focus = false })
             end, 10)
         end

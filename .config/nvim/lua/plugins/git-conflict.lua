@@ -1,4 +1,4 @@
--- Visualize and resolve git merge conflicts
+-- Visualize and resolve git merge conflicts.
 local gh = require("pack").gh
 
 vim.pack.add({ gh("akinsho/git-conflict.nvim") })

@@ -1,4 +1,4 @@
--- Autoformat
+-- Autoformat.
 local gh = require("pack").gh
 
 vim.pack.add({ gh("stevearc/conform.nvim") })
@@ -6,6 +6,8 @@ vim.pack.add({ gh("stevearc/conform.nvim") })
 require("conform").setup({
     formatters = {
         stylua = {
+            -- Fall back to a 4 space default only when no project stylua config
+            -- exists.
             append_args = function(self, ctx)
                 local found = vim.fs.find({ ".stylua.toml", "stylua.toml" }, { upward = true, path = ctx.dirname })
                 if #found > 0 then

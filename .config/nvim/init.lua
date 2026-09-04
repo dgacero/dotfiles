@@ -1,5 +1,8 @@
 -- See https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 
+-- Enable faster startup by caching compiled Lua modules
+vim.loader.enable()
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -15,8 +18,8 @@ require("options")
 -- [[ Basic Keymaps ]]
 require("keymaps")
 
--- [[ Install `lazy.nvim` plugin manager ]]
-require("lazy-bootstrap")
+-- [[ Plugin manager build hooks (`vim.pack`) ]]
+require("pack")
 
 -- [[ Configure and install plugins ]]
-require("lazy-plugins")
+require("plugins")

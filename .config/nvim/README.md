@@ -1,10 +1,11 @@
 # Neovim config
 
-Neovim config using [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugin manager.
+Neovim config using [`vim.pack`](https://neovim.io/doc/user/pack.html), Neovim's built-in plugin manager.
 
 ## Table of contents
 
 - [Plugin manager](#plugin-manager)
+  - [Troubleshooting](#troubleshooting)
 - [Plugins](#plugins)
   - [Completion: blink.cmp + LuaSnip](#completion-blinkcmp--luasnip)
   - [LSP: nvim-lspconfig + Mason](#lsp-nvim-lspconfig--mason)
@@ -24,20 +25,32 @@ Neovim config using [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugi
   - [Keybind hints: which-key.nvim](#keybind-hints-which-keynvim)
   - [Theme: nord.nvim](#theme-nordnvim)
   - [Cursor position: remember.nvim](#cursor-position-remembernvim)
-  - [Tab detection: vim-sleuth](#tab-detection-vim-sleuth)
+  - [Indent detection: guess-indent.nvim](#indent-detection-guess-indentnvim)
 
 ## Plugin manager
 
-**lazy.nvim** installs itself automatically on first launch. No manual install needed. Plugins are defined one file per plugin under `lua/plugins/`.
+**`vim.pack`** is built into Neovim (0.12+), so no bootstrap step is needed. Each plugin is installed and configured in its own file under `lua/plugins/`, required in dependency order from `lua/plugins/init.lua`. Shared build steps (e.g. `telescope-fzf-native`'s `make`, `LuaSnip`'s `make install_jsregexp`, `nvim-treesitter`'s `:TSUpdate`) run via a `PackChanged` autocmd defined in `lua/pack.lua`.
 
 Useful commands:
 
-| Command        | Action                                      |
-| -------------- | ------------------------------------------- |
-| `:Lazy`        | Open the lazy.nvim UI                       |
-| `:Lazy update` | Update all plugins                          |
-| `:Lazy clean`  | Remove plugins no longer in the plugin list |
-| `:Lazy health` | Run health checks                           |
+| Command                                       | Action                             |
+| --------------------------------------------- | ---------------------------------- |
+| `:lua = vim.pack.get()`                       | List installed plugins             |
+| `:lua vim.pack.update()`                      | Update all plugins                 |
+| `:lua vim.pack.update(nil, { force = true })` | Force-reinstall/update all plugins |
+| `:checkhealth vim.pack`                       | Run plugin manager health checks   |
+
+### Troubleshooting
+
+If a plugin install is interrupted (e.g. the terminal closes mid-clone), its directory under `~/.local/share/nvim/site/pack/core/opt/` can be left incomplete. Neovim then fails on startup with an error like `module 'barbar' not found`.
+
+`vim.pack.update()` does not fix this, since the plugin directory already exists and is not re-cloned.
+
+| Command                                | Action                       |
+| -------------------------------------- | ---------------------------- |
+| `rm -rf ~/.local/share/nvim/site/pack` | Remove all installed plugins |
+
+Reopen Neovim afterward and wait for the install progress to reach 100% before doing anything else.
 
 ## Plugins
 
@@ -45,7 +58,7 @@ Useful commands:
 
 [blink.cmp](https://github.com/saghen/blink.cmp) handles autocompletion. [LuaSnip](https://github.com/L3MON4D3/LuaSnip) provides snippet expansion.
 
-Sources: LSP, path, snippets, and lazydev (Lua API).
+Sources: LSP, path, and snippets.
 
 | Key                 | Action                                 |
 | ------------------- | -------------------------------------- |
@@ -67,13 +80,15 @@ Optional servers (uncomment in `lua/plugins/lspconfig.lua` to enable): `pyright`
 
 | Key          | Action                                 |
 | ------------ | -------------------------------------- |
-| `gd`         | Go to definition                       |
-| `gD`         | Go to declaration                      |
-| `gr`         | Go to references                       |
-| `gi`         | Go to implementation                   |
-| `gt`         | Go to type definition                  |
-| `<leader>r`  | Rename symbol                          |
-| `<leader>c`  | Code action / suggestions              |
+| `grd`        | Go to definition                       |
+| `grD`        | Go to declaration                      |
+| `grr`        | Go to references                       |
+| `gri`        | Go to implementation                   |
+| `grt`        | Go to type definition                  |
+| `gO`         | Open document symbols                  |
+| `gW`         | Open workspace symbols                 |
+| `grn`        | Rename symbol                          |
+| `gra`        | Code action / suggestions              |
 | `<leader>th` | Toggle inline type and parameter hints |
 
 **Diagnostic keymaps:**
@@ -83,6 +98,7 @@ Optional servers (uncomment in `lua/plugins/lspconfig.lua` to enable): `pyright`
 | `]d`        | Next diagnostic                  |
 | `[d`        | Previous diagnostic              |
 | `<leader>e` | Open floating diagnostic message |
+| `<leader>d` | Open diagnostic quickfix list    |
 
 ### Formatting: conform.nvim
 
@@ -98,7 +114,7 @@ Configured formatters: `stylua` for Lua, `ruff_format` and `ruff_organize_import
 
 [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) provides syntax highlighting and indentation.
 
-Auto-installs parsers for: `bash`, `c`, `diff`, `html`, `lua`, `markdown`, `vim`, `vimdoc`, `java`, and others on demand.
+Auto-installs parsers for: `bash`, `c`, `diff`, `html`, `lua`, `markdown`, `vim`, `vimdoc`, and others on demand.
 
 No custom keymaps.
 
@@ -245,8 +261,8 @@ Opens automatically after a short delay (configured to `0 ms`). Press any key to
 
 No keymaps.
 
-### Tab detection: vim-sleuth
+### Indent detection: guess-indent.nvim
 
-[vim-sleuth](https://github.com/tpope/vim-sleuth) detects `tabstop` and `shiftwidth` automatically from the file content and surrounding files.
+[guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) detects `tabstop` and `shiftwidth` automatically from the file content and surrounding files.
 
 No keymaps.

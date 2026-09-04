@@ -1,8 +1,4 @@
 -- Markdown/HTML/LaTeX/Typst/YAML previewer
-return {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
+local gh = require("pack").gh
 
-    -- Completion for `blink.cmp`
-    -- dependencies = { "saghen/blink.cmp" },
-}
+vim.pack.add({ gh("OXY2DEV/markview.nvim") })

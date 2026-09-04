@@ -26,14 +26,15 @@ Personal dotfiles managed as a Git repository and symlinked into `$HOME`.
 
 Required:
 
-| Tool           | Required by                             | Install                  |
-| -------------- | --------------------------------------- | ------------------------ |
-| `git`          | everything                              | system package manager   |
-| `curl`         | `.zshrc` downloads Antigen on first run | system package manager   |
-| `nvim` >= 0.10 | `.config/nvim/`                         | `brew install neovim`    |
-| `tmux`         | `.config/tmux/`                         | `brew install tmux`      |
-| `delta`        | `.gitconfig`                            | `brew install git-delta` |
-| `rg` (ripgrep) | `.zshrc` alias, Neovim Telescope        | `brew install ripgrep`   |
+| Tool              | Required by                                                         | Install                        |
+| ----------------- | ------------------------------------------------------------------- | ------------------------------ |
+| `git`             | everything                                                          | system package manager         |
+| `curl`            | `.zshrc` downloads Antigen on first run                             | system package manager         |
+| `nvim` >= 0.10    | `.config/nvim/`                                                     | `brew install neovim`          |
+| `tmux`            | `.config/tmux/`                                                     | `brew install tmux`            |
+| `delta`           | `.gitconfig`                                                        | `brew install git-delta`       |
+| `rg` (ripgrep)    | `.zshrc` alias, Neovim Telescope                                    | `brew install ripgrep`         |
+| `tree-sitter-cli` | Neovim Treesitter (compiles parsers without a prebuilt WASM binary) | `brew install tree-sitter-cli` |
 
 macOS - optional but recommended:
 
@@ -48,7 +49,7 @@ Auto-installed on first use:
 | Tool               | What installs it                                     |
 | ------------------ | ---------------------------------------------------- |
 | Antigen            | `.zshrc` downloads it via `curl` on first shell load |
-| lazy.nvim          | Neovim installs it on first launch                   |
+| `vim.pack`         | Built into Neovim, installs plugins on first launch  |
 | `lua_ls`, `stylua` | Mason installs them on first Neovim launch           |
 
 ## Setup
@@ -105,7 +106,7 @@ Antigen downloads and installs Zsh plugins on this first run.
 nvim
 ```
 
-lazy.nvim installs itself and all plugins on first launch.
+`vim.pack` (Neovim's built-in plugin manager) installs all plugins on first launch.
 
 ## Shell config
 

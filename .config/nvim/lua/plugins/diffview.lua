@@ -1,4 +1,4 @@
--- Git diff/history viewer
-return {
-    "sindrets/diffview.nvim",
-}
+-- Git diff/history viewer.
+local gh = require("pack").gh
+
+vim.pack.add({ gh("sindrets/diffview.nvim") })

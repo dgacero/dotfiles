@@ -18,22 +18,6 @@ vim.o.mouse = "a"
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
--- vim.schedule(function()
---   vim.o.clipboard = 'unnamedplus'
--- end)
---
--- Or force Nvim to use the OSC 52 provider.
--- See `:help clipboard-osc52`
--- NOTE: Not all terminal emulators support reading from the system clipboard (and even for those
--- that do, users should be aware of the security implications), so using OSC 52 for pasting may not
--- be possible (and not necessary, because you can |paste| instead using your system paste function).
--- Users may need to configure their terminal emulator to allow reading from the clipboard.
-vim.g.clipboard = "osc52"
-
 -- Enable break indent
 vim.o.breakindent = true
 

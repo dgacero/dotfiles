@@ -1,12 +1,8 @@
--- [[ Plugin manager helpers for `vim.pack` ]]
--- `vim.pack` is Neovim's built-in plugin manager. This module provides a small
--- `gh` helper to shorten GitHub URLs and registers the build steps that certain
--- plugins need after they are installed or updated.
---   See `:help vim.pack`
+-- Plugin manager helpers for `vim.pack`. Provides a `gh` helper to shorten
+-- GitHub URLs and registers the build steps that certain plugins need after
+-- they are installed or updated.
 
 -- Because most plugins are hosted on GitHub, this helper reduces repetition.
----@param repo string
----@return string
 local function gh(repo)
     return "https://github.com/" .. repo
 end
@@ -24,12 +20,12 @@ local function run_build(name, cmd, cwd)
     end
 end
 
--- Run the appropriate build command for a plugin after it is installed or updated.
---   See `:help vim.pack-events`
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
         local name = ev.data.spec.name
         local kind = ev.data.kind
+        -- Build steps only make sense right after a plugin is installed or
+        -- updated.
         if kind ~= "install" and kind ~= "update" then
             return
         end

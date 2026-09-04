@@ -1,4 +1,4 @@
--- Reopen files at your last edit position
+-- Reopen files at your last edit position.
 local gh = require("pack").gh
 
 vim.pack.add({ gh("vladdoster/remember.nvim") })

@@ -1,12 +1,13 @@
--- Show available keybindings in a popup as you type
+-- Show available keybindings in a popup as you type.
 local gh = require("pack").gh
 
 vim.pack.add({ gh("folke/which-key.nvim") })
 
 require("which-key").setup({
     delay = 0,
-    -- Show which-key only after an additional key press for these operators/modes,
-    -- so e.g. `yaf` shows the popup after `ya` but not after `y`.
+    -- Show which-key only after an additional key press for these
+    -- operators/modes, so e.g. `yaf` shows the popup after `ya` but not after
+    -- `y`.
     defer = function(ctx)
         if vim.list_contains({ "c", "d", "y" }, ctx.operator) then
             return true
@@ -47,7 +48,6 @@ require("which-key").setup({
         },
     },
 
-    -- Document existing key chains
     spec = {
         { "<leader>s", group = "Search", mode = { "n", "v" } },
         { "<leader>t", group = "Toggle" },

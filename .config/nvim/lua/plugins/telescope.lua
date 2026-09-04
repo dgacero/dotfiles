@@ -1,9 +1,10 @@
--- Fuzzy finder over files, buffers, LSP results, and more
+-- Fuzzy finder over files, buffers, LSP results, and more.
 local gh = require("pack").gh
 
 -- Telescope owns the shared libraries plenary and nvim-web-devicons (also used
--- by barbar and nvim-tree). telescope-fzf-native is built by the PackChanged
--- hook in `pack.lua` and only installed when `make` is available.
+-- by barbar and nvim-tree). telescope-fzf-native is built by the
+-- `PackChanged` hook in `pack.lua` and only installed when `make` is
+-- available.
 local plugins = {
     gh("nvim-lua/plenary.nvim"),
     gh("nvim-tree/nvim-web-devicons"),
@@ -46,7 +47,7 @@ require("telescope").setup({
     },
 })
 
--- Enable Telescope extensions if they are installed
+-- Enable Telescope extensions if installed.
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
 
@@ -97,7 +98,6 @@ vim.keymap.set("n", "<leader>so", function()
     })
 end, { desc = "Search in open files" })
 
--- Shortcut for searching your Neovim configuration files
 vim.keymap.set("n", "<leader>sn", function()
     require("telescope-pickers").prettyFilesPicker({
         picker = "find_files",
@@ -105,7 +105,6 @@ vim.keymap.set("n", "<leader>sn", function()
     })
 end, { desc = "Search Neovim files" })
 
--- Diagnostic keymaps
 vim.keymap.set("n", "[d", function()
     vim.diagnostic.jump({ count = -1 })
 end, { desc = "Go to previous diagnostic message" })
@@ -116,25 +115,19 @@ end, { desc = "Go to next diagnostic message" })
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 
--- Add Telescope-based LSP pickers when an LSP attaches to a buffer.
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("telescope-lsp-attach", { clear = true }),
     callback = function(event)
         local buf = event.buf
 
-        -- Find references for the word under your cursor.
         vim.keymap.set("n", "grr", builtin.lsp_references, { buffer = buf, desc = "Goto references" })
 
-        -- Jump to the implementation of the word under your cursor.
         vim.keymap.set("n", "gri", builtin.lsp_implementations, { buffer = buf, desc = "Goto implementation" })
 
-        -- Jump to the definition of the word under your cursor.
         vim.keymap.set("n", "grd", builtin.lsp_definitions, { buffer = buf, desc = "Goto definition" })
 
-        -- Fuzzy find all the symbols in your current document.
         vim.keymap.set("n", "gO", builtin.lsp_document_symbols, { buffer = buf, desc = "Open document symbols" })
 
-        -- Fuzzy find all the symbols in your current workspace.
         vim.keymap.set(
             "n",
             "gW",
@@ -142,7 +135,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             { buffer = buf, desc = "Open workspace symbols" }
         )
 
-        -- Jump to the type of the word under your cursor.
         vim.keymap.set("n", "grt", builtin.lsp_type_definitions, { buffer = buf, desc = "Goto type definition" })
     end,
 })

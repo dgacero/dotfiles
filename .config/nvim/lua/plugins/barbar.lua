@@ -1,4 +1,4 @@
--- Buffer tabs
+-- Buffer tabs.
 local gh = require("pack").gh
 
 -- Must be set before barbar loads. Dependencies gitsigns (git status) and

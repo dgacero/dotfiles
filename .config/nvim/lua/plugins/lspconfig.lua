@@ -1,10 +1,9 @@
--- LSP server configs for the Nvim LSP client, installed via Mason
+-- LSP server configs for the Nvim LSP client, installed via Mason.
 local gh = require("pack").gh
 
 vim.pack.add({
-    -- Main LSP Configuration
     gh("neovim/nvim-lspconfig"),
-    -- Automatically install LSPs and related tools to stdpath for Neovim
+    -- Automatically install LSP servers and related tools.
     gh("mason-org/mason.nvim"),
     gh("mason-org/mason-lspconfig.nvim"),
     gh("WhoIsSethDaniel/mason-tool-installer.nvim"),
@@ -12,11 +11,11 @@ vim.pack.add({
     gh("j-hui/fidget.nvim"),
 })
 
--- Mason must be set up before its dependents.
+-- Mason must be set up before its dependents (mason-lspconfig,
+-- mason-tool-installer).
 require("mason").setup({})
 require("fidget").setup({})
 
--- This function gets run when an LSP attaches to a particular buffer.
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
     callback = function(event)
@@ -25,19 +24,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
-        -- Rename the variable under your cursor.
         map("grn", vim.lsp.buf.rename, "Rename")
 
-        -- Execute a code action, usually your cursor needs to be on top of an error
-        -- or a suggestion from your LSP for this to activate.
         map("gra", vim.lsp.buf.code_action, "Goto code action", { "n", "x" })
 
-        -- WARN: This is not Goto Definition, this is Goto Declaration.
-        --  For example, in C this would take you to the header.
+        -- This is not Goto Definition, this is Goto Declaration. For example,
+        -- in C this would take you to the header.
         map("grD", vim.lsp.buf.declaration, "Goto declaration")
 
-        -- The following two autocommands highlight references of the word under your
-        -- cursor when it rests there, and clear the highlight once you move it.
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client:supports_method("textDocument/documentHighlight", event.buf) then
             local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
@@ -62,7 +56,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             })
         end
 
-        -- Toggle inlay hints, if the language server supports them.
         if client and client:supports_method("textDocument/inlayHint", event.buf) then
             map("<leader>th", function()
                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
@@ -71,26 +64,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
----@type table<string, vim.lsp.Config>
 local servers = {
-    -- clangd = {},
-    -- gopls = {},
-    -- pyright = {},
-    -- rust_analyzer = {},
-    -- ts_ls = {},
-    --
-    -- Optional: uncomment ruff below to install it automatically via Mason.
-    -- ruff = {},
+    -- Optional: uncomment any of the servers below to install and configure
+    -- them automatically via Mason.
+    -- clangd = {},   -- C: LSP.
+    -- ruff = {},     -- Python: linter, formatter, LSP.
+    -- pyright = {},  -- Python: LSP.
+    -- vtsls = {},    -- JS/TS: LSP.
+    -- eslint = {},   -- JS/TS: LSP.
+    -- prettier = {}, -- JS/TS: formatter.
 
-    stylua = {}, -- Used to format Lua code
+    stylua = {}, -- Lua: formatter, LSP.
 
-    -- Special Lua Config, as recommended by neovim help docs
+    -- Special Lua config, recommended by the Neovim help docs.
     lua_ls = {
         on_init = function(client)
-            client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
+            -- Disable formatting (formatting is done by stylua).
+            client.server_capabilities.documentFormattingProvider = false
 
             if client.workspace_folders then
                 local path = client.workspace_folders[1].name
+                -- Respect a project's own `.luarc.json`/`.luarc.jsonc` instead
+                -- of overriding it.
                 if
                     path ~= vim.fn.stdpath("config")
                     and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
@@ -107,27 +102,31 @@ local servers = {
                 },
                 workspace = {
                     checkThirdParty = false,
+                    -- `nvim_get_runtime_file()` includes our own config dir, so
+                    -- `lua_ls` sees our files twice and emits spurious
+                    -- `[duplicate-doc-field]` warnings.
+                    -- See https://github.com/neovim/nvim-lspconfig/issues/3189
                     library = vim.api.nvim_get_runtime_file("", true),
                 },
             })
         end,
-        ---@type lspconfig.settings.lua_ls
         settings = {
             Lua = {
                 completion = {
                     callSnippet = "Replace",
                 },
-                format = { enable = false }, -- Disable formatting (formatting is done by stylua)
+                -- Disable formatting (formatting is done by stylua).
+                format = { enable = false },
             },
         },
     },
 }
 
--- Ensure the servers and tools above are installed
 local ensure_installed = vim.tbl_keys(servers or {})
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
--- Translates between nvim-lspconfig server names and mason.nvim package names (e.g. lua_ls <-> lua-language-server)
+-- Translates between nvim-lspconfig server names and mason.nvim package names
+-- (e.g. lua_ls <-> lua-language-server).
 require("mason-lspconfig").setup({
     automatic_enable = false,
 })

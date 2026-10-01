@@ -106,7 +106,7 @@ Any server installed via Mason (`:Mason`) is auto-enabled, even if not listed in
 
 [conform.nvim](https://github.com/stevearc/conform.nvim) runs formatters on demand.
 
-Configured formatters: `stylua` for Lua, `ruff_format` and `ruff_organize_imports` for Python.
+Configured formatters: `stylua` for Lua, `ruff_format` and `ruff_organize_imports` for Python, and `prettier` for JavaScript, TypeScript, JSON, and Markdown.
 
 | Key         | Action                |
 | ----------- | --------------------- |

@@ -86,6 +86,8 @@ These are standard tmux bindings, included here as a reference.
 | `prefix + }`     | Swap pane with the one below             |
 | `prefix + Space` | Cycle through pane layouts               |
 
+Pane borders show an empty status line (top) to make the active pane's border easier to spot.
+
 ### Copy mode
 
 Enter with `prefix + v`. The config uses vi key bindings.

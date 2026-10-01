@@ -6,6 +6,7 @@ Neovim config using [`vim.pack`](https://neovim.io/doc/user/pack.html), Neovim's
 
 - [Plugin manager](#plugin-manager)
   - [Troubleshooting](#troubleshooting)
+- [Custom keybindings](#custom-keybindings)
 - [Plugins](#plugins)
   - [Completion: blink.cmp + LuaSnip](#completion-blinkcmp--luasnip)
   - [LSP: nvim-lspconfig + Mason](#lsp-nvim-lspconfig--mason)
@@ -51,6 +52,20 @@ If a plugin install is interrupted (e.g. the terminal closes mid-clone), its dir
 | `rm -rf ~/.local/share/nvim/site/pack` | Remove all installed plugins |
 
 Reopen Neovim afterward and wait for the install progress to reach 100% before doing anything else.
+
+## Custom keybindings
+
+These bindings override or extend Neovim defaults, defined in `lua/keymaps.lua`.
+
+| Key                 | Action                         |
+| ------------------- | ------------------------------ |
+| `<Esc>`             | Clear search highlight         |
+| `<C-h>`             | Move focus to the left window  |
+| `<C-l>`             | Move focus to the right window |
+| `<C-j>`             | Move focus to the lower window |
+| `<C-k>`             | Move focus to the upper window |
+| `<leader>r`         | Reload buffer from disk        |
+| `<Esc><Esc>` (term) | Exit terminal mode             |
 
 ## Plugins
 

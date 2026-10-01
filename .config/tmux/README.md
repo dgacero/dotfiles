@@ -23,22 +23,24 @@ On a US keyboard where backtick is easy to reach, switch back with the [US layou
 
 These bindings override or extend the tmux defaults.
 
-| Key            | Action                                          |
-| -------------- | ----------------------------------------------- |
-| `prefix + r`   | Reload tmux config                              |
-| `prefix + \|`  | Send prefix through to inner session            |
-| `prefix + +`   | Split pane horizontally (new pane to the right) |
-| `prefix + -`   | Split pane vertically (new pane below)          |
-| `prefix + c`   | New window in current directory                 |
-| `prefix + h`   | Move to pane left                               |
-| `prefix + j`   | Move to pane below                              |
-| `prefix + k`   | Move to pane above                              |
-| `prefix + l`   | Move to pane right                              |
-| `prefix + C-h` | Resize pane left (5 cells, repeatable)          |
-| `prefix + C-j` | Resize pane down (5 cells, repeatable)          |
-| `prefix + C-k` | Resize pane up (5 cells, repeatable)            |
-| `prefix + C-l` | Resize pane right (5 cells, repeatable)         |
-| `prefix + v`   | Enter copy mode                                 |
+| Key            | Action                                                |
+| -------------- | ----------------------------------------------------- |
+| `prefix + r`   | Reload tmux config (keeps the active keyboard layout) |
+| `prefix + \|`  | Send prefix through to inner session                  |
+| `prefix + +`   | Split pane horizontally (new pane to the right)       |
+| `prefix + -`   | Split pane vertically (new pane below)                |
+| `prefix + c`   | New window in current directory                       |
+| `prefix + h`   | Move to pane left                                     |
+| `prefix + j`   | Move to pane below                                    |
+| `prefix + k`   | Move to pane above                                    |
+| `prefix + l`   | Move to pane right                                    |
+| `prefix + C-h` | Resize pane left (5 cells, repeatable)                |
+| `prefix + C-j` | Resize pane down (5 cells, repeatable)                |
+| `prefix + C-k` | Resize pane up (5 cells, repeatable)                  |
+| `prefix + C-l` | Resize pane right (5 cells, repeatable)               |
+| `prefix + v`   | Enter copy mode                                       |
+
+Reloading shows a popup confirming the config reloaded.
 
 **Copy mode (vi):**
 

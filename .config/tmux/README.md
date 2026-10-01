@@ -40,7 +40,7 @@ These bindings override or extend the tmux defaults.
 | `prefix + C-l` | Resize pane right (5 cells, repeatable)               |
 | `prefix + v`   | Enter copy mode                                       |
 
-Reloading shows a popup confirming the config reloaded.
+Reloading shows a popup confirming the config reloaded. Press escape to dismiss it.
 
 **Copy mode (vi):**
 
@@ -126,4 +126,4 @@ tmux source-file ~/.config/tmux/tmux-la.conf
 tmux source-file ~/.config/tmux/tmux-us.conf
 ```
 
-A popup notification appears for 5 seconds after switching, confirming the new bindings.
+A popup notification appears after switching, confirming the new bindings. Press escape to dismiss it.

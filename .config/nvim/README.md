@@ -6,6 +6,7 @@ Neovim config using [`vim.pack`](https://neovim.io/doc/user/pack.html), Neovim's
 
 - [Plugin manager](#plugin-manager)
   - [Troubleshooting](#troubleshooting)
+- [Custom keybindings](#custom-keybindings)
 - [Plugins](#plugins)
   - [Completion: blink.cmp + LuaSnip](#completion-blinkcmp--luasnip)
   - [LSP: nvim-lspconfig + Mason](#lsp-nvim-lspconfig--mason)
@@ -52,6 +53,20 @@ If a plugin install is interrupted (e.g. the terminal closes mid-clone), its dir
 
 Reopen Neovim afterward and wait for the install progress to reach 100% before doing anything else.
 
+## Custom keybindings
+
+These bindings override or extend Neovim defaults, defined in `lua/keymaps.lua`.
+
+| Key                 | Action                         |
+| ------------------- | ------------------------------ |
+| `<Esc>`             | Clear search highlight         |
+| `<C-h>`             | Move focus to the left window  |
+| `<C-l>`             | Move focus to the right window |
+| `<C-j>`             | Move focus to the lower window |
+| `<C-k>`             | Move focus to the upper window |
+| `<leader>r`         | Reload buffer from disk        |
+| `<Esc><Esc>` (term) | Exit terminal mode             |
+
 ## Plugins
 
 ### Completion: blink.cmp + LuaSnip
@@ -75,6 +90,8 @@ Sources: LSP, path, and snippets.
 Servers installed automatically: `lua_ls` (Lua), `stylua` (formatter).
 
 Optional servers (uncomment in `lua/plugins/lspconfig.lua` to enable): `pyright`, `ruff`.
+
+Any server installed via Mason (`:Mason`) is auto-enabled, even if not listed in `lua/plugins/lspconfig.lua`.
 
 **LSP keymaps** (active when an LSP attaches to a buffer):
 
@@ -104,7 +121,7 @@ Optional servers (uncomment in `lua/plugins/lspconfig.lua` to enable): `pyright`
 
 [conform.nvim](https://github.com/stevearc/conform.nvim) runs formatters on demand.
 
-Configured formatters: `stylua` for Lua, `ruff_format` and `ruff_organize_imports` for Python.
+Configured formatters: `stylua` for Lua, `ruff_format` and `ruff_organize_imports` for Python, and `prettier` for JavaScript, TypeScript, JSON, and Markdown.
 
 | Key         | Action                |
 | ----------- | --------------------- |

@@ -23,22 +23,24 @@ On a US keyboard where backtick is easy to reach, switch back with the [US layou
 
 These bindings override or extend the tmux defaults.
 
-| Key            | Action                                          |
-| -------------- | ----------------------------------------------- |
-| `prefix + r`   | Reload tmux config                              |
-| `prefix + \|`  | Send prefix through to inner session            |
-| `prefix + +`   | Split pane horizontally (new pane to the right) |
-| `prefix + -`   | Split pane vertically (new pane below)          |
-| `prefix + c`   | New window in current directory                 |
-| `prefix + h`   | Move to pane left                               |
-| `prefix + j`   | Move to pane below                              |
-| `prefix + k`   | Move to pane above                              |
-| `prefix + l`   | Move to pane right                              |
-| `prefix + C-h` | Resize pane left (5 cells, repeatable)          |
-| `prefix + C-j` | Resize pane down (5 cells, repeatable)          |
-| `prefix + C-k` | Resize pane up (5 cells, repeatable)            |
-| `prefix + C-l` | Resize pane right (5 cells, repeatable)         |
-| `prefix + v`   | Enter copy mode                                 |
+| Key            | Action                                                |
+| -------------- | ----------------------------------------------------- |
+| `prefix + r`   | Reload tmux config (keeps the active keyboard layout) |
+| `prefix + \|`  | Send prefix through to inner session                  |
+| `prefix + +`   | Split pane horizontally (new pane to the right)       |
+| `prefix + -`   | Split pane vertically (new pane below)                |
+| `prefix + c`   | New window in current directory                       |
+| `prefix + h`   | Move to pane left                                     |
+| `prefix + j`   | Move to pane below                                    |
+| `prefix + k`   | Move to pane above                                    |
+| `prefix + l`   | Move to pane right                                    |
+| `prefix + C-h` | Resize pane left (5 cells, repeatable)                |
+| `prefix + C-j` | Resize pane down (5 cells, repeatable)                |
+| `prefix + C-k` | Resize pane up (5 cells, repeatable)                  |
+| `prefix + C-l` | Resize pane right (5 cells, repeatable)               |
+| `prefix + v`   | Enter copy mode                                       |
+
+Reloading shows a popup confirming the config reloaded. Press escape to dismiss it.
 
 **Copy mode (vi):**
 
@@ -86,6 +88,8 @@ These are standard tmux bindings, included here as a reference.
 | `prefix + }`     | Swap pane with the one below             |
 | `prefix + Space` | Cycle through pane layouts               |
 
+Pane borders show an empty status line (top) to make the active pane's border easier to spot.
+
 ### Copy mode
 
 Enter with `prefix + v`. The config uses vi key bindings.
@@ -122,4 +126,4 @@ tmux source-file ~/.config/tmux/tmux-la.conf
 tmux source-file ~/.config/tmux/tmux-us.conf
 ```
 
-A popup notification appears for 5 seconds after switching, confirming the new bindings.
+A popup notification appears after switching, confirming the new bindings. Press escape to dismiss it.

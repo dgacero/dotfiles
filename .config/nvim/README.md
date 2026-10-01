@@ -76,6 +76,8 @@ Servers installed automatically: `lua_ls` (Lua), `stylua` (formatter).
 
 Optional servers (uncomment in `lua/plugins/lspconfig.lua` to enable): `pyright`, `ruff`.
 
+Any server installed via Mason (`:Mason`) is auto-enabled, even if not listed in `lua/plugins/lspconfig.lua`.
+
 **LSP keymaps** (active when an LSP attaches to a buffer):
 
 | Key          | Action                                 |

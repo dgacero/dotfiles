@@ -127,9 +127,7 @@ require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 -- Translates between nvim-lspconfig server names and mason.nvim package names
 -- (e.g. lua_ls <-> lua-language-server).
-require("mason-lspconfig").setup({
-    automatic_enable = false,
-})
+require("mason-lspconfig").setup({})
 
 for name, server in pairs(servers) do
     vim.lsp.config(name, server)

@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = {}
 
------ GENERAL SETTINGS -----
+-- ===== General settings =====
 config.audible_bell = "Disabled"
 
 config.use_fancy_tab_bar = false
@@ -13,18 +13,18 @@ config.font = wezterm.font({
 })
 config.font_size = 14
 
--- Disable ligatures
+-- Disable ligatures.
 -- See https://wezterm.org/config/font-shaping.html#advanced-font-shaping-options
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
--- Left Option key does not work correctly on macOS
+-- Left Option key does not work correctly on macOS.
 -- See https://github.com/wezterm/wezterm/issues/5468#issue-2315988600
 config.send_composed_key_when_left_alt_is_pressed = true
 
------ COLOR SCHEME -----
+-- ===== Color scheme =====
 config.color_scheme = "nord"
 
--- Nord theme with extra darker color
+-- Nord theme with extra darker color.
 -- See https://www.nordtheme.com/docs/colors-and-palettes
 local nord_darker = "#242933"
 local nord0 = "#2e3440"

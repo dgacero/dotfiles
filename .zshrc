@@ -1,11 +1,11 @@
-##### ZSH HISTORY #####
+# ===== Zsh history =====
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
-# Share history between all sessions
+# Share history between all sessions.
 setopt SHARE_HISTORY
 
-##### ENVIRONMENT #####
+# ===== Environment =====
 export PATH="$HOME/.local/bin:$PATH"
 
 if command -v nvim >/dev/null 2>&1; then
@@ -18,11 +18,8 @@ fi
 
 export VISUAL=$EDITOR
 
-# export TERM="xterm-256color"
-# export COLORTERM=truecolor
-
-##### ALIASES #####
-# Use GNU ls on macOS if available
+# ===== Aliases =====
+# Use GNU `ls` on macOS if available.
 if command -v gls >/dev/null 2>&1; then
     alias ls="gls -lAh --color=auto --group-directories-first"
 elif ls --group-directories-first >/dev/null 2>&1; then
@@ -37,26 +34,26 @@ fi
 
 alias clear="echo 'clear is disabled, use Ctrl-L instead'; false"
 
-##### ZSH APPEARANCE #####
-# Disable Ctrl-D to close the terminal
+# ===== Zsh appearance =====
+# Disable `Ctrl-D` to close the terminal.
 set -o ignoreeof
 
-# Command prompt
+# Command prompt.
 if [[ -n "$TMUX" ]]; then
     export PS1="%B%F{blue}%2~%f %F{green}❯%f%b "
 else
     export PS1="[No tmux] %B%F{blue}%2~%f %F{green}❯%f%b "
 fi
 
-# Newline after every command
+# Newline after every command.
 precmd() {
     precmd() {
         echo
     }
 }
 
-##### DIRCOLORS #####
-# Use GNU dircolors on macOS if available
+# ===== Dircolors =====
+# Use GNU `dircolors` on macOS if available.
 if command -v gdircolors >/dev/null 2>&1; then
     alias dircolors="gdircolors"
 fi
@@ -73,15 +70,15 @@ if command -v dircolors >/dev/null 2>&1; then
     test -r "$DIRCOLORS_FILE" && eval "$(dircolors "$DIRCOLORS_FILE")"
 fi
 
-###### ANTIGEN (PLUGIN MANAGER) #####
+# ===== Antigen (plugin manager) =====
 export ANTIGEN_FILE=$HOME/antigen.zsh
 
-# Download Antigen if it's not already installed
+# Download `antigen` if it's not already installed.
 if [[ ! -s "$ANTIGEN_FILE" ]]; then
     curl -L git.io/antigen >"$ANTIGEN_FILE"
 fi
 
-# Apply plugins
+# Apply plugins.
 {
     source "$ANTIGEN_FILE"
 
@@ -89,60 +86,65 @@ fi
 
     antigen bundle jeffreytse/zsh-vi-mode
 
-    # NOTE: Must be the last bundle but come before zsh-history-substring-search
+    # NOTE: Must be the last bundle but come before
+    # `zsh-history-substring-search`.
     # See https://github.com/zsh-users/zsh-history-substring-search#install
     antigen bundle zsh-users/zsh-syntax-highlighting
 
-    # NOTE: Must be the last bundle
+    # NOTE: Must be the last bundle.
     # See https://github.com/zsh-users/zsh-history-substring-search#install
     antigen bundle zsh-users/zsh-history-substring-search
 
-    # Tell Antigen that you're done
+    # Tell `antigen` that you're done.
     antigen apply
 }
 
-### zsh-autosuggestions configuration
-# NOTE: zsh-vi-mode overwrites some key bindings
+## ===== `zsh-autosuggestions` configuration =====
+# NOTE: `zsh-vi-mode` overwrites some key bindings.
 # See https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#execute-extra-commands
 function zvm_after_init() {
-    # Accepts the current suggestion
-    bindkey "^I" autosuggest-accept # Tab
+    # Accepts the current suggestion.
+    bindkey "^I" autosuggest-accept  # Tab.
 
-    # Zsh default auto-completion
-    bindkey "^[[Z" complete-word # Shift + Tab
+    # Zsh default auto-completion.
+    bindkey "^[[Z" complete-word  # Shift + Tab.
 }
 
-# Move forward one word
-# With zsh-autosuggestions enabled, it accepts the next word in the current suggestion
-bindkey -M vicmd "^[[Z" forward-word # Shift + Tab
+# Move forward one word.
+# With `zsh-autosuggestions` enabled, it accepts the next word in the current
+# suggestion.
+bindkey -M vicmd "^[[Z" forward-word  # Shift + Tab.
 
-### zsh-vi-mode configuration
-# Disable editing the current command line in an external editor
+## ===== `zsh-vi-mode` configuration =====
+# Disable editing the current command line in an external editor.
 function zvm_after_lazy_keybindings() {
     bindkey -M visual -r "v"
 }
 
-# Move to the first non-blank character of the line
+# Move to the first non-blank character of the line.
 bindkey -M vicmd "_" vi-first-non-blank
 
-# Always start with insert mode for each command line
+# Always start with insert mode for each command line.
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
-### zsh-syntax-highlighting configuration
-ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)      # Highlight brackets
-ZSH_HIGHLIGHT_STYLES[path]="none"           # Don't underline paths
-ZSH_HIGHLIGHT_STYLES[precommand]="fg=green" # Don't underline paths
+## ===== `zsh-syntax-highlighting` configuration =====
+# Highlight brackets.
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 
-### zsh-history-substring-search configuration
-# bindkey "^[[A" history-substring-search-up  # Up arrow
+# Don't underline paths.
+ZSH_HIGHLIGHT_STYLES[path]="none"
+
+# Color precommand modifiers (e.g. `sudo`) green.
+ZSH_HIGHLIGHT_STYLES[precommand]="fg=green"
+
+## ===== `zsh-history-substring-search` configuration =====
 bindkey -M vicmd "k" history-substring-search-up
-# bindkey "^[[B" history-substring-search-down  # Down arrow
 bindkey -M vicmd "j" history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="fg=yellow,bold"
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="fg=red,bold"
 
-##### LOCAL OVERRIDES #####
+# ===== Local overrides =====
 if [[ -f "$HOME/.zshrc.local" ]]; then
     source "$HOME/.zshrc.local"
 fi

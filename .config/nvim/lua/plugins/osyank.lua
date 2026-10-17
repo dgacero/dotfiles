@@ -1,4 +1,4 @@
--- Copy to system clipboard over SSH via OSC52.
+-- Copy to system clipboard over SSH via `OSC52`.
 local gh = require("pack").gh
 
 vim.pack.add({ gh("ojroques/nvim-osc52") })

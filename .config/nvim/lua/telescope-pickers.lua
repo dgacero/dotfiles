@@ -30,8 +30,7 @@ function telescopePickers.getPathAndTail(fileName)
 end
 
 -- Wraps a Find File picker to display entries with an icon and a truncated
--- path, since Telescope's default display doesn't look good.
--- Adapted from: https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1541423345
+-- path, since `telescope`'s default display doesn't look good.
 function telescopePickers.prettyFilesPicker(pickerAndOptions)
     if type(pickerAndOptions) ~= "table" or pickerAndOptions.picker == nil then
         print(
@@ -42,7 +41,7 @@ function telescopePickers.prettyFilesPicker(pickerAndOptions)
 
     options = pickerAndOptions.options or {}
 
-    -- Reuse Telescope's entry maker as-is and only replace its `display`
+    -- Reuse `telescope`'s entry maker as-is and only replace its `display`
     -- function, instead of rebuilding the whole entry table ourselves.
     local originalEntryMaker = telescopeMakeEntryModule.gen_from_file(options)
 
@@ -90,7 +89,7 @@ function telescopePickers.prettyFilesPicker(pickerAndOptions)
 end
 
 -- Wraps a Grep Search picker to display entries with an icon and a truncated
--- path, since Telescope's default display doesn't look good.
+-- path, since `telescope`'s default display doesn't look good.
 function telescopePickers.prettyGrepPicker(pickerAndOptions)
     if type(pickerAndOptions) ~= "table" or pickerAndOptions.picker == nil then
         print(
@@ -101,7 +100,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
 
     options = pickerAndOptions.options or {}
 
-    -- Reuse Telescope's entry maker as-is and only replace its `display`
+    -- Reuse `telescope`'s entry maker as-is and only replace its `display`
     -- function, instead of rebuilding the whole entry table ourselves.
     local originalEntryMaker = telescopeMakeEntryModule.gen_from_vimgrep(options)
 
@@ -126,7 +125,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
             -- Add a trailing space so the tail is separated from the path.
             local tailForDisplay = tail .. " "
 
-            -- Deviation from the original snippet: no "-> line:col" suffix.
+            -- Deviation from the original snippet: no `-> line:col` suffix.
             local text = options.file_encoding and vim.iconv(entry.text, options.file_encoding, "utf8") or entry.text
 
             return displayer({

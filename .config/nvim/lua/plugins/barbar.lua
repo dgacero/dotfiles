@@ -1,8 +1,8 @@
 -- Buffer tabs.
 local gh = require("pack").gh
 
--- Must be set before barbar loads. Dependencies gitsigns (git status) and
--- nvim-web-devicons (file icons) are installed earlier by their own modules.
+-- Must be set before `barbar` loads. Dependencies `gitsigns` (git status) and
+-- `nvim-web-devicons` (file icons) are installed earlier by their own modules.
 vim.g.barbar_auto_setup = false
 
 vim.pack.add({ { src = gh("romgrk/barbar.nvim"), version = vim.version.range("^1.0.0") } })

@@ -12,7 +12,7 @@ style = "Light"
 family = "JetBrainsMono Nerd Font"
 style = "SemiBold"
 
-# Nord palette with custom darker color #242933
+# Nord palette with custom darker color `#242933`.
 # See https://github.com/alacritty/alacritty-theme/blob/master/themes/nord.toml
 [colors.primary]
 background = "#242933"

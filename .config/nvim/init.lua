@@ -5,7 +5,7 @@ vim.loader.enable()
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Set to true if a Nerd Font is installed and selected in the terminal.
+-- Set to `true` if a Nerd Font is installed and selected in the terminal.
 vim.g.have_nerd_font = true
 
 require("options")

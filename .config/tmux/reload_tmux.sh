@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-# Reload `tmux.conf` while preserving the active keyboard layout
-# (`tmux.conf` resets @keyboard_layout to its default on every source).
+# Reload `tmux.conf` while preserving the active keyboard layout (`tmux.conf`
+# resets `@keyboard_layout` to its default on every source).
 layout=$(tmux show-options -gv @keyboard_layout)
 
 tmux source-file ~/.config/tmux/tmux.conf

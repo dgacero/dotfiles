@@ -5,7 +5,7 @@ vim.pack.add({ gh("folke/which-key.nvim") })
 
 require("which-key").setup({
     delay = 0,
-    -- Show which-key only after an additional key press for these
+    -- Show `which-key` only after an additional key press for these
     -- operators/modes, so e.g. `yaf` shows the popup after `ya` but not after
     -- `y`.
     defer = function(ctx)

@@ -14,7 +14,7 @@ local function treesitter_try_attach(buf, language)
     end
     vim.treesitter.start(buf, language)
 
-    -- Fall back to vim's built-in indentexpr when the language has no indent
+    -- Fall back to vim's built-in `indentexpr` when the language has no indent
     -- query.
     local has_indent_query = vim.treesitter.query.get(language, "indents") ~= nil
     if has_indent_query then

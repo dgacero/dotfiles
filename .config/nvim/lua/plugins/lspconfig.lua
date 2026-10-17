@@ -1,4 +1,4 @@
--- LSP server configs for the Nvim LSP client, installed via Mason.
+-- LSP server configs for the Nvim LSP client, installed via `mason`.
 local gh = require("pack").gh
 
 vim.pack.add({
@@ -11,8 +11,8 @@ vim.pack.add({
     gh("j-hui/fidget.nvim"),
 })
 
--- Mason must be set up before its dependents (mason-lspconfig,
--- mason-tool-installer).
+-- `mason` must be set up before its dependents (`mason-lspconfig`,
+-- `mason-tool-installer`).
 require("mason").setup({})
 require("fidget").setup({})
 
@@ -66,20 +66,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local servers = {
     -- Optional: uncomment any of the servers below to install and configure
-    -- them automatically via Mason.
-    -- clangd = {},   -- C: LSP.
-    -- ruff = {},     -- Python: linter, formatter, LSP.
-    -- pyright = {},  -- Python: LSP.
-    -- vtsls = {},    -- JS/TS: LSP.
-    -- eslint = {},   -- JS/TS: LSP.
-    -- prettier = {}, -- JS/TS: formatter.
+    -- them automatically via `mason`.
+    -- clangd = {},    -- C: LSP.
+    -- ruff = {},      -- Python: linter, formatter, LSP.
+    -- pyright = {},   -- Python: LSP.
+    -- vtsls = {},     -- JS/TS: LSP.
+    -- eslint = {},    -- JS/TS: LSP.
+    -- prettier = {},  -- JS/TS: formatter.
 
-    stylua = {}, -- Lua: formatter, LSP.
+    stylua = {},  -- Lua: formatter, LSP.
 
     -- Special Lua config, recommended by the Neovim help docs.
     lua_ls = {
         on_init = function(client)
-            -- Disable formatting (formatting is done by stylua).
+            -- Disable formatting (formatting is done by `stylua`).
             client.server_capabilities.documentFormattingProvider = false
 
             if client.workspace_folders then
@@ -94,7 +94,7 @@ local servers = {
                 end
             end
 
-            local current_settings = client.config.settings --[[@as lspconfig.settings.lua_ls]]
+            local current_settings = client.config.setting
             client.config.settings.Lua = vim.tbl_deep_extend("force", current_settings.Lua, {
                 runtime = {
                     version = "LuaJIT",
@@ -115,7 +115,7 @@ local servers = {
                 completion = {
                     callSnippet = "Replace",
                 },
-                -- Disable formatting (formatting is done by stylua).
+                -- Disable formatting (formatting is done by `stylua`).
                 format = { enable = false },
             },
         },
@@ -125,8 +125,8 @@ local servers = {
 local ensure_installed = vim.tbl_keys(servers or {})
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
--- Translates between nvim-lspconfig server names and mason.nvim package names
--- (e.g. lua_ls <-> lua-language-server).
+-- Translates between `nvim-lspconfig` server names and `mason.nvim` package
+-- names (e.g. `lua_ls` <-> `lua-language-server`).
 require("mason-lspconfig").setup({})
 
 for name, server in pairs(servers) do

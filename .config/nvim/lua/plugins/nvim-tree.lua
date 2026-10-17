@@ -1,7 +1,7 @@
 -- File explorer sidebar.
 local gh = require("pack").gh
 
--- nvim-web-devicons is installed earlier by the telescope module.
+-- `nvim-web-devicons` is installed earlier by the `telescope` module.
 vim.pack.add({ gh("nvim-tree/nvim-tree.lua") })
 
 require("nvim-tree").setup({
@@ -60,8 +60,8 @@ vim.keymap.set("n", "<C-n>", function()
     require("nvim-tree.api").tree.toggle()
 end, { silent = true, noremap = true, desc = "Toggle file explorer" })
 
--- Keep `:bd` and `:q` from being swallowed by the tree window, which nvim-tree
--- doesn't handle on its own.
+-- Keep `:bd` and `:q` from being swallowed by the tree window, which
+-- `nvim-tree` doesn't handle on its own.
 vim.api.nvim_create_autocmd({ "BufEnter", "QuitPre" }, {
     nested = false,
     callback = function(e)
@@ -71,7 +71,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "QuitPre" }, {
             return
         end
 
-        -- Exclude non-focusable windows (e.g. which-key popups, LSP hover)
+        -- Exclude non-focusable windows (e.g. `which-key` popups, LSP hover)
         -- from the count.
         local winCount = 0
         for _, winId in ipairs(vim.api.nvim_list_wins()) do
@@ -89,7 +89,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "QuitPre" }, {
         -- `:bd` was probably issued and only the tree window is left, so behave
         -- as if the tree was closed (see `:h :bd`).
         if e.event == "BufEnter" and winCount == 1 then
-            -- Required to avoid "Vim:E444: Cannot close last window".
+            -- Required to avoid `Vim:E444: Cannot close last window`.
             vim.defer_fn(function()
                 -- Close the tree, landing on the last buffer used before
                 -- closing.

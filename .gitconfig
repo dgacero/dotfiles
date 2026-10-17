@@ -15,7 +15,7 @@
 
 ; See https://github.com/dandavison/delta/commit/fdfcc8fce30754a4f05eeb167a15d519888fc909
 [delta]
-    navigate = true  # use n and N to move between diff sections
+    navigate = true  # Use `n` and `N` to move between diff sections.
     side-by-side = true
     dark = true
     syntax-theme = Nord

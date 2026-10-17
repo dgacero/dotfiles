@@ -1,10 +1,9 @@
 -- Fuzzy finder over files, buffers, LSP results, and more.
 local gh = require("pack").gh
 
--- Telescope owns the shared libraries plenary and nvim-web-devicons (also used
--- by barbar and nvim-tree). telescope-fzf-native is built by the
--- `PackChanged` hook in `pack.lua` and only installed when `make` is
--- available.
+-- `telescope` owns the shared libraries `plenary` and `nvim-web-devicons` (also
+-- used by `barbar` and `nvim-tree`). `telescope-fzf-native` is built by the
+-- `PackChanged` hook in `pack.lua` and only installed when `make` is available.
 local plugins = {
     gh("nvim-lua/plenary.nvim"),
     gh("nvim-tree/nvim-web-devicons"),
@@ -47,7 +46,7 @@ require("telescope").setup({
     },
 })
 
--- Enable Telescope extensions if installed.
+-- Enable `telescope` extensions if installed.
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
 

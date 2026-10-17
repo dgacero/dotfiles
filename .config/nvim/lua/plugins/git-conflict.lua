@@ -3,7 +3,8 @@ local gh = require("pack").gh
 
 vim.pack.add({ gh("akinsho/git-conflict.nvim") })
 
--- Nord doesn't ship highlight groups for git-conflict, so define them manually.
+-- Nord doesn't ship highlight groups for `git-conflict`, so define them
+-- manually.
 local nord8 = "#88c0d0"
 local nord13 = "#ebcb8b"
 local nord15 = "#b48ead"
